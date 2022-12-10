@@ -42,100 +42,24 @@
     <!-- Single item -->
     <div class="carousel-item active">
       <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp"
+        src="{% static 'kezdo2.png' %}"
         class="d-block w-100"
         alt="Sunset Over the City"
       />
       <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
+        <h2>Hápl Melinda festményei</h2>
         <p>
-          Nulla vitae elit libero, a pharetra augue mollis interdum.
+          Nézzék meg sajátkezű munkáim!
         </p>
       </div>
     </div>
-
-    <!-- Single item -->
-    <div class="carousel-item">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp"
-        class="d-block w-100"
-        alt="Canyon at Nigh"
-      />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-      </div>
-    </div>
-
-    <!-- Single item -->
-    <div class="carousel-item">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp"
-        class="d-block w-100"
-        alt="Cliff Above a Stormy Sea"
-      />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-        </p>
-      </div>
-    </div>
-  </div>
-  <!-- Inner -->
-
-  <!-- Controls -->
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-mdb-target="#carouselBasicExample"
-    data-mdb-slide="prev"
-  >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-mdb-target="#carouselBasicExample"
-    data-mdb-slide="next"
-  >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>
 <div
-  id="carouselMultiItemExample"
-  class="carousel slide carousel-dark text-center mt-5"
-  data-mdb-ride="carousel"
+  class="text-center mt-5"
 >
-  <!-- Controls -->
-  <div class="d-flex justify-content-center mb-4">
-    <button
-      class="carousel-control-prev position-relative"
-      type="button"
-      data-mdb-target="#carouselMultiItemExample"
-      data-mdb-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next position-relative"
-      type="button"
-      data-mdb-target="#carouselMultiItemExample"
-      data-mdb-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
   <!-- Inner -->
-  <div class="carousel-inner py-4">
+  <div class="py-4">
     <!-- Single item -->
-    <div class="carousel-item active">
       <div class="container">
         <div class="row">
           {% for i in kepek_tomb %}
@@ -160,7 +84,6 @@
           {% endfor %}
         </div>
       </div>
-    </div>
 
 
     <!-- Single item -->
