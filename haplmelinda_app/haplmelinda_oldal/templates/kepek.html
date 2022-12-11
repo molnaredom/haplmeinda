@@ -43,7 +43,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ i }}</h5>
 
-                            <a href="#!" class="btn btn-primary">Részletek</a>
+                            <a href="{% url 'kep_reszletek' i.id %}" class="btn btn-primary">Részletek</a>
+
                         </div>
                     </div>
                 </div>

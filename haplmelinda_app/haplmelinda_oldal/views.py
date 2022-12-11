@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from .models import Kep
 
+def kep_reszletek(request, id):
+    konkret_kep = Kep.objects.get(id=id)
+    return render(request, 'kep_reszletek.html', {"kep" : konkret_kep})
+
+
 def index(request):
     kepek = Kep.objects.all()
     return render(request, 'kepek.html', {"kepek_tomb": kepek})
