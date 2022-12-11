@@ -10,205 +10,50 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<div id="carouselBasicExample"
-  class="carousel slide carousel-fade"
-  data-mdb-ride="carousel">
-  <!-- Indicators -->
-  <div class="carousel-indicators">
-    <button
-      type="button"
-      data-mdb-target="#carouselBasicExample"
-      data-mdb-slide-to="0"
-      class="active"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselBasicExample"
-      data-mdb-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselBasicExample"
-      data-mdb-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
-  </div>
+<div id="carouselBasicExample">
 
-  <!-- Inner -->
-  <div class="carousel-inner">
-    <!-- Single item -->
-    <div class="carousel-item active">
-      <img
-        src="{% static 'kezdo2.png' %}"
-        class="d-block w-100"
-        alt="Sunset Over the City"
-      />
-      <div class="carousel-caption d-none d-md-block">
-        <h2>Hápl Melinda festményei</h2>
-        <p>
-          Nézzék meg sajátkezű munkáim!
-        </p>
-      </div>
-    </div>
-</div>
-<div
-  class="text-center mt-5"
->
-  <!-- Inner -->
-  <div class="py-4">
-    <!-- Single item -->
-      <div class="container">
-        <div class="row">
-          {% for i in kepek_tomb %}
-
-          <div class="col-lg-4 d-none d-lg-block">
-            <div class="card">
-              <img
-                src="{{i.kep.url}}"
-                class="card-img-top"
-                alt="Sunset Over the Sea"
-              />
-              <div class="card-body">
-                <h5 class="card-title">{{ i }}</h5>
-
-                <p class="card-text">
-                  {{ i.leiras }}
+    <!-- Inner -->
+    <div class="carousel-inner">
+        <!-- Single item -->
+        <div class="carousel-item active">
+            <img
+                    src="{% static 'kezdo2.png' %}"
+                    class="d-block w-100"
+                    alt="Sunset Over the City"
+            />
+            <div class="carousel-caption ">
+                <h2>Hápl Melinda festményei</h2>
+                <p>
+                    Nézzék meg sajátkezű munkáim!
                 </p>
-                <a href="#!" class="btn btn-primary">Button</a>
-              </div>
             </div>
-          </div>
-          {% endfor %}
         </div>
-      </div>
-
-
-    <!-- Single item -->
-    <div class="carousel-item">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-12">
-            <div class="card">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-                class="card-img-top"
-                alt="Fissure in Sandstone"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 d-none d-lg-block">
-            <div class="card">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/185.webp"
-                class="card-img-top"
-                alt="Storm Clouds"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 d-none d-lg-block">
-            <div class="card">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/186.webp"
-                class="card-img-top"
-                alt="Hot Air Balloons"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
+    <div
+            class="text-center mt-5"
+    >
+        <!-- Inner -->
+        <div class="py-4 m-3">
+            <div class="row">
+                {% for i in kepek_tomb %}
 
-    <!-- Single item -->
-    <div class="carousel-item">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-            <div class="card">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/187.webp"
-                class="card-img-top"
-                alt="Peaks Against the Starry Sky"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
+                <div class="col-md-4 my-4">
+                    <div class="card">
+                        <img src="{{i.kep.url}}" class="card-img-top"/>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ i }}</h5>
 
-          <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
-            <div class="card">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/188.webp"
-                class="card-img-top"
-                alt="Bridge Over Water"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">Button</a>
-              </div>
+                            <a href="#!" class="btn btn-primary">Részletek</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-          </div>
 
-          <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
-            <div class="card">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/189.webp"
-                class="card-img-top"
-                alt="Purbeck Heritage Coast"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
+
         </div>
-      </div>
+        <!-- Inner -->
     </div>
-  </div>
-  <!-- Inner -->
 </div>
 
 
