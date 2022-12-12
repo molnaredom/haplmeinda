@@ -6,10 +6,9 @@ def kep_reszletek(request, id):
     return render(request, 'kep_reszletek.html', {"kep" : konkret_kep})
 
 
-def index(request):
+def album(request):
     kepek = Kep.objects.all().order_by('?')
     return render(request, 'kepek.html', {"kepek_tomb": kepek})
-
 
 def rolam(request):
     return render(request, 'rolam.html', {})
