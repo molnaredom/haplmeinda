@@ -7,7 +7,7 @@ def kep_reszletek(request, id):
 
 
 def index(request):
-    kepek = Kep.objects.all()
+    kepek = Kep.objects.all().order_by('?')
     return render(request, 'kepek.html', {"kepek_tomb": kepek})
 
 from django.views.generic import DetailView
