@@ -10,6 +10,11 @@ def index(request):
     kepek = Kep.objects.all().order_by('?')
     return render(request, 'kepek.html', {"kepek_tomb": kepek})
 
+
+def rolam(request):
+    return render(request, 'rolam.html', {})
+
+
 from django.views.generic import DetailView
 
 class EmpImageDisplay(DetailView):
