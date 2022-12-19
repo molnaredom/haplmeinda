@@ -18,6 +18,9 @@
         .leiras {
             text-align: left;
         }
+        .jobb {
+            text-align: right;
+        }
 
         .zoom-img {
             overflow: hidden;
@@ -56,14 +59,15 @@
             <div class="col-md-6 my-4">
 
                 <div class="card">
-                    <h1>{{ kep.cim }}</h1>
-                    <div class="card text-left leiras">
-                        <h3  class="">Leírás a képről:</h3>
-                        <p>{{ kep.leiras }}</p>
-                    </div>
-                    <div class="card text-left leiras">
-                        <h3  class="">Méret:</h3>
-                        <p>{{ kep.meret }}cm</p>
+                    <h1>{{ kep.cim }} [{{ kep.sorszam }}.]</h1>
+<!--                    <div class="card text-left leiras">-->
+<!--                        <h3  class="">Leírás a képről:</h3>-->
+<!--                        <p>{{ kep.leiras }}</p>-->
+<!--                    </div>-->
+                    <div class="card leiras">
+                        <h3  class="">Méretek(magasság x szélesség):</h3>
+                        <p>Kerettel együtt: {{ kep.belso_meret }}cm</p>
+                        <p>Keret nélkül: {{ kep.belso_meret }}cm</p>
                     </div>
                     <div class="card text-left leiras">
                         <h3  class="">Téma:</h3>
@@ -81,6 +85,9 @@
                     {% else %}
                         <p>{{ kep.ar }}Ft</p>
                     {% endif %}
+                    </div>
+                    <div class="card jobb">
+                        <i class="align-right">A kép méreteinél előfordulhat 2-3mm tévedés.</i>
                     </div>
 
 
