@@ -1,19 +1,21 @@
-Sorszám,Cím,Belső méret, Külső méret
-107,erdőben nappal és éjjel,39.0x29.0,42.9x22.8
-74,Indás nő,15.0x30.8,21.4x37.5
-76,Hableány,15.0x31.0,21.4x37.5
-71,Erdőben a nő,15.2x31.2,23.5x39.5
-29,Levelek között,24.1x24.1,27.8x27.8
-91,Cseresznyefa,8.1x25.0,18.4x35.3
-90,Kék pipacs,8.1x25.0,18.4x35.3
-62,Páva,18.4x23.5,26.9x31.9
-104,Szellőrózsa,18.1x24.3,25.4x31.2
-96, Indák királynője, 11.1x20.1, 19.8x28.8
-100, Fehér virágok (olaj vászon), 18.2x24.3, 25.3x31.5
-102, Fehér pipacs (zöld háttér), 18.2x24.4, 25.3x31.5
-31, Pipacs (tűzzománc), 16.1x16.1, 24.6x24.6
-101, Tulipánfa, 18.1x24.6, 25.3x31.4
-105, Bordó tulipánok, 18.1x24.6, 25.3x31.4
-40, A magányos fa, 9.5x6.6, 15.3x12.4
-37, Dombos táj, 9.4x6.5, 18.1x13.1
-
+Sorszám,Cím,Belső_méret(mag/szél),Külső_méret(mag/szél),Ár,Téma,Technika,Leírás,Eladva
+107,erdőben nappal és éjjel,39.0x29.0,42.9x22.8,30000,...,...,...,false
+74,Indás nő,15.0x30.8,21.4x37.5,30000,...,...,...,false
+76,Hableány,15.0x31.0,21.4x37.5,30000,...,...,...,false
+71,Erdőben a nő,15.2x31.2,23.5x39.5,30000,...,...,...,false
+29,Levelek között,24.1x24.1,27.8x27.8,30000,...,...,...,false
+91,Cseresznyefa,8.1x25.0,18.4x35.3,30000,...,...,...,false
+90,Kék pipacs,8.1x25.0,18.4x35.3,30000,...,...,...,false
+62,Páva,18.4x23.5,26.9x31.9,30000,...,...,...,false
+104,Szellőrózsa,18.1x24.3,25.4x31.2,30000,...,...,...,false
+96,Indák királynője,11.1x20.1,19.8x28.8,30000,...,...,...,false
+100,Fehér virágok (olaj vászon),18.2x24.3,25.3x31.5,30000,...,...,...,false
+102,Fehér pipacs (zöld háttér),18.2x24.4,25.3x31.5,30000,...,...,...,false
+31,Pipacs (tűzzománc), 16.1x16.1,24.6x24.6,30000,...,...,...,false
+101,Tulipánfa,18.1x24.6,25.3x31.4,30000,...,...,...,false
+105,Bordó tulipánok,18.1x24.6,25.3x31.4,30000,...,...,...,false
+40,A magányos fa,9.5x6.6,15.3x12.4,30000,...,...,...,false
+37,Dombos táj,9.4x6.5,18.1x13.1,30000,...,...,...,false
+36,Fa a domboldalon,6.1x9.6,14.3x17.8,30000,...,...,...,false
+95,Tűz királynő,20.9x14.8,29.5x23.5,30000,...,...,...,false
+24,Bimbós hölgy,15.1x12.1,27.4x21.4,30000,...,...,...,false
