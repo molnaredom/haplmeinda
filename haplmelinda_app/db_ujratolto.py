@@ -26,7 +26,8 @@ def main():
 
     records = []
     for i, adat in enumerate(alapadatok, eltolas):
-        records.append((i, adat[0], adat[1], adat[2], adat[3], adat[4], adat[5],
+        if not adat[0].startswith("#"):
+            records.append((i, adat[0], adat[1], adat[2], adat[3], adat[4], adat[5],
                         adat[6], adat[7], adat[8], f"upload/{adat[0]}.jpg"))
 
     # insert multiple records in a single query
