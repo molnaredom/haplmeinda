@@ -25,8 +25,7 @@
         <!-- Gallery -->
         <div class="row">
             <div class="col-lg-4 mb-4 mb-lg-0">
-                {% for i in kepek_tomb %}
-                {% if i.id|modulo:3 == 0 %}
+                {% for i in o1 %}
                 <div class="card shadow-sm">
                     <img src="{{i.kep.url}}" class="card-img-top"/>
                     <div class="card-body">
@@ -40,13 +39,11 @@
                         </div>
                     </div>
                 </div>
-                {% endif %}
                 {% endfor %}
             </div>
 
             <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-                {% for i in kepek_tomb %}
-                {% if i.id|modulo:3 == 1 %}
+                {% for i in o2 %}
                 <div class="card shadow-sm">
                         <img src="{{i.kep.url}}" class="card-img-top"/>
                         <div class="card-body">
@@ -60,13 +57,11 @@
                             </div>
                         </div>
                     </div>
-                {% endif %}
                 {% endfor %}
             </div>
 
             <div class="col-lg-4 mb-4 mb-lg-0">
-                {% for i in kepek_tomb %}
-                {% if i.id|modulo:3 == 2 %}
+                {% for i in o3 %}
                 <div class="card shadow-sm">
                         <img src="{{i.kep.url}}" class="card-img-top"/>
                         <div class="card-body">
@@ -80,7 +75,6 @@
                             </div>
                         </div>
                     </div>
-                {% endif %}
                 {% endfor %}
             </div>
         </div>
