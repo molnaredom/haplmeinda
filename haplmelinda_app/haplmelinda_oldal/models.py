@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Kep(models.Model):
     sorszam = models.IntegerField()
     cim = models.CharField(max_length=200)

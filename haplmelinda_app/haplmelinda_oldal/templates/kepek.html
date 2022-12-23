@@ -1,22 +1,19 @@
 {% extends 'base.html' %}
 {% load my_tags %}
 {% block content %}
-<!DOCTYPE html>
 {% load static %}
 
-<main>
+<div class="mx-5 px-4">
 
-    <section class="py-5 text-center container">
+    <section class="py-3 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Album example</h1>
-                <p class="lead text-muted">Something short and leading about the collection below—its contents, the
-                    creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
-                    entirely.</p>
-                <p>
-                    <a href="#" class="btn btn-primary my-2">Main call to action</a>
-                    <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-                </p>
+                <h1 class="fw-light">Hápl Melinda Festményei</h1>
+                <p class="lead text-muted">A nevem Hápl Melinda, és ez az oldal azért jött létre, hogy megmutathassam a képeim. </p>
+<!--                <p>-->
+<!--                    <a href="#" class="btn btn-primary my-2">Main call to action</a>-->
+<!--                    <a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
+<!--                </p>-->
             </div>
         </div>
     </section>
@@ -45,44 +42,44 @@
             <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                 {% for i in o2 %}
                 <div class="card shadow-sm">
-                        <img src="{{i.kep.url}}" class="card-img-top"/>
-                        <div class="card-body">
-                            <h5 class="card-text">{{ i.cim }}</h5>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a href="{% url 'kep_reszletek' i.id %}" class="btn btn-sm btn-outline-success">Megtekintés</a>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">{{ i.ar }}Ft</button>
-                                </div>
-                                <!--                <small class="text-muted">9 mins</small>-->
+                    <img src="{{i.kep.url}}" class="card-img-top"/>
+                    <div class="card-body">
+                        <h5 class="card-text">{{ i.cim }}</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="{% url 'kep_reszletek' i.id %}" class="btn btn-sm btn-outline-success">Megtekintés</a>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">{{ i.ar }}Ft</button>
                             </div>
+                            <!--                <small class="text-muted">9 mins</small>-->
                         </div>
                     </div>
+                </div>
                 {% endfor %}
             </div>
 
             <div class="col-lg-4 mb-4 mb-lg-0">
                 {% for i in o3 %}
                 <div class="card shadow-sm">
-                        <img src="{{i.kep.url}}" class="card-img-top"/>
-                        <div class="card-body">
-                            <h5 class="card-text">{{ i.cim }}</h5>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a href="{% url 'kep_reszletek' i.id %}" class="btn btn-sm btn-outline-success">Megtekintés</a>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">{{ i.ar }}Ft</button>
-                                </div>
-                                <!--                <small class="text-muted">9 mins</small>-->
+                    <img
+     sizes="(max-width: 300px) 250px,
+            (max-width: 450px) 400px,
+            600px" src="{{i.kep.url}}" class="card-img-top"/>
+                    <div class="card-body">
+                        <h5 class="card-text">{{ i.cim }}</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="{% url 'kep_reszletek' i.id %}" class="btn btn-sm btn-outline-success">Megtekintés</a>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">{{ i.ar }}Ft</button>
                             </div>
+                            <!--                <small class="text-muted">9 mins</small>-->
                         </div>
                     </div>
+                </div>
                 {% endfor %}
             </div>
         </div>
     </div>
 
-</main>
-
-</body>
-</html>
+</div>
 
 {% endblock content %}
