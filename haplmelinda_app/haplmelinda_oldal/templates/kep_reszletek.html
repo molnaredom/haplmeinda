@@ -58,26 +58,26 @@
             </div>
             <div class="col-md-6 my-4">
 
-                <div class="card">
-                    <h1>{{ kep.cim }} [{{ kep.sorszam }}.]</h1>
+                <div class="card border-0">
+                    <h1 class="p-4 mb-5">{{ kep.cim }} [{{ kep.sorszam }}.]</h1>
 <!--                    <div class="card text-left leiras">-->
 <!--                        <h3  class="">Leírás a képről:</h3>-->
 <!--                        <p>{{ kep.leiras }}</p>-->
 <!--                    </div>-->
-                    <div class="card leiras">
+                    <div class="card leiras border-0">
                         <h3  class="">Méretek(magasság x szélesség):</h3>
                         <p>Kerettel együtt: {{ kep.belso_meret }}cm</p>
                         <p>Keret nélkül: {{ kep.belso_meret }}cm</p>
                     </div>
-                    <div class="card text-left leiras">
+                    <div class="card text-left leiras border-0">
                         <h3  class="">Téma:</h3>
-                        <p>{{ kep.tema }}cm</p>
+                        <p>{{ kep.tema }}</p>
                     </div>
-                    <div class="card text-left leiras">
+                    <div class="card text-left leiras border-0">
                         <h3  class="">Technika:</h3>
-                        <p>{{ kep.technika }}cm</p>
+                        <p>{{ kep.technika }}</p>
                     </div>
-                    <div class="card text-left leiras">
+                    <div class="card leiras border-0">
                         <h3>Ár:</h3>
                         {% if kep.eladva %}
                          <p class="alert-danger">A kép már elkelt!</p>
@@ -86,8 +86,12 @@
                         <p>{{ kep.ar }}Ft</p>
                     {% endif %}
                     </div>
-                    <div class="card jobb">
+                    <div class="card jobb border-0">
                         <i class="align-right">A kép méreteinél előfordulhat 2-3mm tévedés.</i>
+                    </div>
+                    <div class="card leiras mt-5 border-0">
+                        <h5>Amennyiben elnyeri tetszésed valamelyik kép, vásárlásra is lehetőség van. Velem telefonon felvéve a kapcsolatot máris a kezedben tarthatod a képet.</h5>
+                        <h3 class="pt-4">06 70 7722013</h3>
                     </div>
 
 
