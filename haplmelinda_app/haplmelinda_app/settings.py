@@ -25,7 +25,15 @@ SECRET_KEY = 'django-insecure-0e+hnb$*fax%plux@iyjhh257du$-@rzb6l16y8qqe2os1zj1g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    '0.0.0.0',
+    'h139-153.rackhostvps.com',
+    '91.227.139.153',
+    'haplmelinda.hu',
+    'www.haplmelinda.hu'
+]
 
 
 # Application definition
