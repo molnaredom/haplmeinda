@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'haplmelinda_oldal',
+    "django_extensions",
     'haplmelinda_oldal.templatetags'
 ]
 
