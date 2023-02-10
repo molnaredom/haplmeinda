@@ -2,4 +2,4 @@ django
 Pillow
 django-extensions
 Werkzeug
-
+django_resized

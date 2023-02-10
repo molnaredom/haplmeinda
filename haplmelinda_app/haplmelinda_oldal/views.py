@@ -8,7 +8,7 @@ def kep_reszletek(request, id):
 
 from django.db.models import F
 def album(request):
-    kepek = Kep.objects.all()  #.order_by('?')
+    kepek = Kep.objects.all().order_by('?')
 
     oszlop1 = kepek.annotate(idmod3=F('id') % 3).filter(idmod3=0)
     oszlop2 = kepek.annotate(idmod3=F('id') % 3).filter(idmod3=1)
