@@ -3,3 +3,4 @@ Pillow
 django-extensions
 Werkzeug
 django_resized
+cx_Oracle
