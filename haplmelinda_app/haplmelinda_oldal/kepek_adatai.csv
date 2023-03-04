@@ -3,7 +3,7 @@ Sorszám,Cím,Belső_méret(mag/szél),Külső_méret(mag/szél),Ár,Téma,Techn
 74,Indás nő,15.0x30.8,21.4x37.5,30000,...,...,...,false
 76,Hableány,15.0x31.0,21.4x37.5,30000,...,...,...,false
 71,Erdőben a nő,15.2x31.2,23.5x39.5,30000,...,...,...,false
-#29,Levelek között,24.1x24.1,27.8x27.8,30000,...,...,...,false
+929,Levelek között,24.1x24.1,27.8x27.8,30000,...,...,...,false
 91,Cseresznyefa,8.1x25.0,18.4x35.3,30000,...,...,...,false
 90,Kék pipacs,8.1x25.0,18.4x35.3,30000,...,...,...,false
 62,Páva,18.4x23.5,26.9x31.9,30000,...,...,...,false
@@ -11,52 +11,72 @@ Sorszám,Cím,Belső_méret(mag/szél),Külső_méret(mag/szél),Ár,Téma,Techn
 96,Indák királynője,11.1x20.1,19.8x28.8,30000,...,...,...,false
 100,Fehér virágok (olaj vászon),18.2x24.3,25.3x31.5,30000,...,...,...,false
 102,Fehér pipacs (zöld háttér),18.2x24.4,25.3x31.5,30000,...,...,...,false
-31,Pipacs (tűzzománc), 16.1x16.1,24.6x24.6,30000,...,...,...,false
+31,Pipacs, 16.1x16.1,24.6x24.6,30000,természet,...,...,false
 101,Tulipánfa,18.1x24.6,25.3x31.4,30000,...,...,...,false
 105,Bordó tulipánok,18.1x24.6,25.3x31.4,30000,...,...,...,false
-40,A magányos fa,9.5x6.6,15.3x12.4,30000,...,...,...,false
-#37,Dombos táj,9.4x6.5,18.1x13.1,30000,...,...,...,false
-#36,Fa a domboldalon,6.1x9.6,14.3x17.8,30000,...,...,...,false
+1037,Dombos táj,9.4x6.5,18.1x13.1,30000,...,...,...,false
+1036,Fa a domboldalon,6.1x9.6,14.3x17.8,30000,...,...,...,false
 95,Tűz királynő,20.9x14.8,29.5x23.5,30000,...,...,...,false
-24,Bimbós hölgy,15.1x12.1,27.4x21.4,30000,...,...,...,false
-#7,Balerina,20.1x15.3,29.5x24.5,30000,...,...,...,false
-2,Dombos táj fákkal,20.1x15.0,26.9x21.737,30000,...,...,...,false
-1005,Dombos táj,4.2x10.8,13.1x17.9,30000,...,...,...,false
-40,Magányos fa,6.3x9.2,12.1x15.1,30000,...,...,...,false
+24,Bimbós hölgy,15.1x12.1,27.4x21.4,30000,női arc,...,...,false
+7,Balerina,20.1x15.3,29.5x24.5,30000,női alak,...,...,false
+2,Dombos táj,20.1x15.0,26.9x21.737,30000,természet,...,...,false
+37,Dombos táj,4.2x10.8,13.1x17.9,30000,természet,...,...,false
+40,Magányos fa,6.3x9.2,12.1x15.1,30000,természet,...,...,false
 79,Egymáshoz érve (háttal),24.0x11.6,34.3x17.9,30000,...,...,...,false
-11,Fénybe néző,9.8x18.9,18.9x27.3,30000,...,...,...,false
+11,Fénybe néző,9.8x18.9,18.9x27.3,30000,női arc,...,...,false
 86,Mandala,23.9x23.9,27.6x27.6,30000,...,...,...,false
 26,Szent család,24.3x19.8,33.1x28.1,30000,...,...,...,false
-#17,Szerelem,23.0x17.1,32.4x26.5,30000,...,...,...,false
+17,Szerelem,23.0x17.1,32.4x26.5,30000,szerelem,...,...,false
 82,Ég és föld között (fa akril),19.8x14,8x34.0x28.0,30000,...,...,...,false
 70,Karcnő,29.2x19.3,34.7x24.7,30000,...,...,...,false
 1002,Három lány,9.9x27.1,20.2x39.3,30000,...,...,...,false
-1,Erdő,20.1x21.8,26.8x21.8,30000,...,...,...,false
+1,Erdőben,20.1x21.8,26.8x21.8,30000,természet,...,...,false
 103,Sárga liliom,14.3x18.0,31.0x25.1,30000,...,...,...,false
 34,Őszi lány fakerettel,7.0x9.3,18.4x18.4,30000,...,...,...,false
 83,Fa a domb előtt,15.3x9.9,22.4x17.0,30000,...,...,...,false
 61,Liliom,24.0,24.0,30000,...,...,...,false
-#23,Őszi hölgy,14.2x11.2,20.2x17.3,30000,...,...,...,false
-33,Imádkozó kereszt,9.9x5.1,21.1x21.1,30000,...,...,...,false
-12,Nyári lány,9.8x7.9,21.4x19.4,30000,...,...,...,false
-10,Őszi lány,9.8x7.9,21.4x19.4,30000,...,...,...,false
-15,Esőben,9.8x7.9,21.4x19.4,30000,...,...,...,false
+23,Őszi hölgy,14.2x11.2,20.2x17.3,30000,női arc,...,...,false
+33,Imádkozó kereszt,9.9x5.1,21.1x21.1,30000,vallási témájú,...,...,false
+12,Nyári lány,9.8x7.9,21.4x19.4,30000,női arc,...,...,false
+10,Őszi lány,9.8x7.9,21.4x19.4,30000,női arc,...,...,false
+15,Esőben,9.8x7.9,21.4x19.4,30000,női alak,...,...,false
 63,Keltai kereszt (csempe),18.6x8.1,22.8x12.8,30000,...,...,...,false
 65,Tápiószentmártoni szkíta aranyszarvas,9.1x19.1,12.9x22.8,30000,...,...,...,false
 64,Zöldhalompusztai szkíta aranyszarvas,9.1x19.1,12.9x22.8,30000,...,...,...,false
 1033,Orchidea,14.3x9.5,17.2x12.3,30000,...,...,...,false
-30,Folyó szélén,9.7x19.6,12.3x22.2,30000,...,...,...,false
-13,Hosszú hajú lány,9.9x7.9,21.4x19.4,30000,...,...,...,false
-42,Szőke hajú nő,4.0x9.0,9.6x14.7,30000,...,...,...,false
-9,Szerelem,9.5x6.6,21.0x18.2,30000,...,...,...,false
-8,Egymásba olvadva,9.5x6.6,21.0x18.2,30000,...,...,...,false
-21,Táncoló lány,15.0x12.0,27.3x21.4,30000,...,...,...,false
+30,Folyó szélén,9.7x19.6,12.3x22.2,30000,természet,...,...,false
+13,Hosszú hajú lány,9.9x7.9,21.4x19.4,30000,női alak,...,...,false
+42,Szőke hajú nő,4.0x9.0,9.6x14.7,30000,női arc,...,...,false
+9,Szerelem,9.5x6.6,21.0x18.2,30000,szerelem,...,...,false
+8,Egymásba olvadva,9.5x6.6,21.0x18.2,30000,szerelem,...,...,false
+21,Táncoló lány,15.0x12.0,27.3x21.4,30000,női alak,...,...,false
 1003,Üveg,14.7,14.7,30000,...,...,...,false
 85,Mandala (fa),10.2x10.2,19.3x19.3,30000,...,...,...,false
 84,Halak kövekkel,10.2x10.2,19.3x19.3,30000,...,...,...,false
 57,Liliom porcelán,14.2x8.6,17.2x11.7,30000,...,...,...,false
-38,Indák között,9.2x9.2,15.0x15.0,30000,...,...,...,false
+38,Indák között,9.2x9.2,15.0x15.0,30000,női alak,...,...,false
 58,Mákvirág 2.,8.8x7.0,11.2x9.2,30000,...,...,...,false
-45,Lovas kép 1. (rózsaszín),4.4x9.5,10.4x15.4,30000,...,...,...,false
+45,Lovas kép 1. (rózsaszín),4.4x9.5,10.4x15.4,30000,állat,...,...,false
 55,Régi Magyarország,9.3x13.9,12.9x16.9,30000,...,...,...,false
-41,A nagy fa,5.8x8.9,9.8x13.0,30000,...,...,...,false
+41,A nagy fa,5.8x8.9,9.8x13.0,30000,természet,...,...,false
+1034,Erdőben,...,...,..,természet,...,...,false
+1033,Fa a domboldalon,...,...,..,természet,...,...,false
+22,Laura,...,...,..,női arc,...,...,false
+19,Háromlovas lány,...,...,..,női alak,...,...,false
+39,Félre néző lány,...,...,..,női alak,...,...,false
+44,Napfényben táncolok,...,...,..,emberek,...,...,false
+33,Orhidea,...,...,..,virág,...,...,false
+47,Mini erdő részlet,...,...,..,természet,...,...,false
+43,Lepkeszárnyon,...,...,..,női arc,...,...,false
+14,Édenkert,...,...,..,női arc,...,...,false
+6,Álomba ringatva,...,...,..,szerelem,...,...,false
+4,Három lány,...,...,..,női arc,...,...,false
+20,Szerelem a tóban,...,...,..,szerelem,...,...,false
+29,Tengeri város,...,...,..,természet,...,...,false
+28,Tengerben úszó ember,...,...,..,?,...,...,false
+25,Szent család szamárháton,...,...,..,vallási témájú,...,...,false
+27,Jézus az olajfánál,...,...,..,vallási témájú,...,...,false
+48,Nyári lány 2,...,...,..,női arc,...,...,false
+49,Kettes virág,...,...,..,virág,...,...,false
+46,Tűz,...,...,..,természet,...,...,false
+50,Hármas virág,...,...,..,virág,...,...,false
