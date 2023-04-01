@@ -10,14 +10,13 @@ from django.db.models import F
 def album(request):
     kepek = Kep.objects.all().order_by('?')
     print(request.POST)
-    if "tema" in request.POST:
-        print("téma léesz a téma", request.POST)
+    if request.method == 'POST' and 'tema' in request.POST:
+        print("Téma alapján szűrés:", request.POST)
         tema_neve = request.POST["tema"]
         print(tema_neve)
-        eredemeny =Kep.objects.all().filter(tema=tema_neve)
-        print(eredemeny)
-    else:
-        print("nem sikerult")
+        if tema_neve:
+            kepek = Kep.objects.filter(tema=tema_neve).order_by('?')
+    return render(request, 'album.html', {'kepek': kepek})
 
     oszlop1 = kepek.annotate(idmod3=F('id') % 3).filter(idmod3=0)
     oszlop2 = kepek.annotate(idmod3=F('id') % 3).filter(idmod3=1)
