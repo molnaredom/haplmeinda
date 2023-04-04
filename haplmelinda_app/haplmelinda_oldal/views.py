@@ -16,7 +16,7 @@ def album(request):
         print(tema_neve)
         if tema_neve:
             kepek = Kep.objects.filter(tema=tema_neve).order_by('?')
-    return render(request, 'album.html', {'kepek': kepek})
+            return render(request, 'kepek.html', {'kepek_tomb': kepek})
 
     oszlop1 = kepek.annotate(idmod3=F('id') % 3).filter(idmod3=0)
     oszlop2 = kepek.annotate(idmod3=F('id') % 3).filter(idmod3=1)
