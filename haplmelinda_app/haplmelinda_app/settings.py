@@ -86,17 +86,14 @@ WSGI_APPLICATION = 'haplmelinda_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        # 'ENGINE': 'django.db.backends.oracle',
-        # 'NAME': 'dwh',
-        # 'USER': 'django',
-        # 'PASSWORD': 'django',
-        # 'HOST': 'localhost',
-        # 'PORT': '1521',
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'xe',
+        'USER': 'system',
+        'PASSWORD': 'oracle',
+        'HOST': '172.17.0.2',
+        'PORT': '1521',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
