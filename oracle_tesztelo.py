@@ -3,8 +3,8 @@
 import cx_Oracle
 
 # Connect as user "hr" with password "welcome" to the "orclpdb1" service running on this computer.
-connection = cx_Oracle.connect(user="django", password="django",
-                               dsn="localhost")
+connection = cx_Oracle.connect(user="system", password="oracle",
+                               dsn="172.17.0.2/xe")
 
 cursor = connection.cursor()
 cursor.execute("""
