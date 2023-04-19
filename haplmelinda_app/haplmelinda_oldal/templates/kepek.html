@@ -25,12 +25,18 @@
         </div>
     </section>
 <div class="bg-danger p-5">
-
     <form method="POST" action="">
         {% csrf_token %}
-        <input class="form-check-input" type="radio" id="{{ i }}" name="tema" value="női alak">
-
-        <button type="submit">  enter</button>
+        <label for="tema">Válasszon egy témát:</label>
+        <select name="tema" id="tema">
+            <option value="">Minden téma</option>
+            <option value="természet">Természet</option>
+            <option value="női alak">Női alak</option>
+            <option value="virág">Virág</option>
+            <option value="szerelem">Szerelem</option>
+            <option value="vallási téma">Vallási téma</option>
+        </select>
+        <button type="submit">Szűrés</button>
     </form>
 </div>
     <div class="album py-5 bg-light">
