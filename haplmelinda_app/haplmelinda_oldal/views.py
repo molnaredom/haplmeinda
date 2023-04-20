@@ -1,5 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Kep
+
+
+def update_kep(request, id):
+    konkret_kep = Kep.objects.get(id=id)
+    return render(request, 'kep_reszletek.html', {"kep" : konkret_kep})
+
+
+def delete_kep(request, id):
+    jegy = Kep.objects.get(id=id)
+    if request.method == "POST":
+        jegy.delete()
+        return redirect("album")
+    return render(request, "delete.html", {"obj": jegy})
 
 
 def kep_reszletek(request, id):
