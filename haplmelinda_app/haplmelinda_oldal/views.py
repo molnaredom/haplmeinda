@@ -8,12 +8,28 @@ def update_kep(request, id):
     form = KepForm(instance=kep_obj)
 
     if request.method == 'POST':
-        form = KepForm(request.POST, instance=kep_obj)
+        form = KepForm(request.POST, files=request.FILES, instance=kep_obj)
+        # form = KepForm(data=request.POST, files=request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             return render(request, 'kep_reszletek.html', {"kep": kep_obj, 'form': form})
 
     return render(request, 'update_kep.html', {"kep": kep_obj, 'form': form})
+
+
+def create_kep(request):
+    form = KepForm()
+    if request.method == "POST":
+        form = KepForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            print("Sikeres Kép készítés")
+            return redirect("album")
+        else:
+            print("Nem valid a form")
+
+    context = {'form': form}
+    return render(request, "update_kep.html", context)
 
 
 def delete_kep(request, id):
