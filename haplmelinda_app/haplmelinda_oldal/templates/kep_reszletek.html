@@ -50,7 +50,7 @@
 <div class="text-center mt-5">
     <!-- Inner -->
     <div class="py-4 m-3">
-        <div class="row">
+        <div class="row px-5">
             <div class="col-md-6 my-4">
                 <div class="card zoom-img">
                     <img src="{{kep.kep.url}}" class="card-img-top"/>
@@ -60,6 +60,10 @@
 
                 <div class="card border-0">
                     <h1 class="p-4 mb-5">{{ kep.cim }} [{{ kep.sorszam }}.]</h1>
+                    {% if request.user.is_superuser %}
+                        <a href="{% url 'delete_kep' kep.id %}" type="button" class="btn btn-danger">Törlés</a>
+                        <a href="{% url 'update_kep' kep.id %}" type="button" class="btn btn-warning">Módosítás</a>
+                    {% endif %}
                     <div class="card leiras border-0">
                         <h3  class="">Méretek(magasság x szélesség):</h3>
                         <p>Kerettel együtt: {{ kep.belso_meret }}cm</p>

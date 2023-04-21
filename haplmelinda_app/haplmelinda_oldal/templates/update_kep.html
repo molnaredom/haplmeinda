@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if request.user.is_superuser %}
+        <form method="POST" action="">
+            <div class="row my-5">
+              <div class="col-3"></div>
+              <div class="col-6">
+                {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" name="mentes" class="btn btn-success">
+                Mentés
+            </button>
+              </div>
+              <div class="col-3"></div>
+            </div>
+
+        </form>
+    {% else %}
+        <div class="p-5">
+            <h1>Ehhez nincs jogosultságot</h1>
+        </div>
+    {% endif %}
+{% endblock content %}
+

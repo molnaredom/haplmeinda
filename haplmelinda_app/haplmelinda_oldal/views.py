@@ -1,10 +1,19 @@
 from django.shortcuts import render, redirect
 from .models import Kep
+from .forms import KepForm
 
 
 def update_kep(request, id):
-    konkret_kep = Kep.objects.get(id=id)
-    return render(request, 'kep_reszletek.html', {"kep" : konkret_kep})
+    kep_obj = Kep.objects.get(id=id)
+    form = KepForm(instance=kep_obj)
+
+    if request.method == 'POST':
+        form = KepForm(request.POST, instance=kep_obj)
+        if form.is_valid():
+            form.save()
+            return render(request, 'kep_reszletek.html', {"kep": kep_obj, 'form': form})
+
+    return render(request, 'update_kep.html', {"kep": kep_obj, 'form': form})
 
 
 def delete_kep(request, id):
