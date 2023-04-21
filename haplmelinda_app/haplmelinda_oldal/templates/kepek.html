@@ -24,7 +24,7 @@
             </div>
         </div>
     </section>
-<div class="bg-danger p-5">
+<div class="bg-info p-5 rounded">
     <form method="POST" action="">
         {% csrf_token %}
         <label for="tema">Válasszon egy témát:</label>
@@ -38,6 +38,9 @@
         </select>
         <button type="submit">Szűrés</button>
     </form>
+    {% if request.user.is_superuser %}
+    <a href="{% url 'create_kep' %}" type="button" class="btn btn-success">+ Új kép hozzáadása</a>
+    {% endif %}
 </div>
     <div class="album py-5 bg-light">
         <!-- Gallery -->
