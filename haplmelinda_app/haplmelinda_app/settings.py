@@ -90,7 +90,7 @@ DATABASES = {
         'NAME': 'xe',
         'USER': 'system',
         'PASSWORD': 'oracle',
-        'HOST': '172.17.0.2',
+        'HOST': 'localhost',
         'PORT': '1521',
     }
 }

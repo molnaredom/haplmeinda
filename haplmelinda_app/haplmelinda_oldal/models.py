@@ -20,7 +20,7 @@ class Kep(models.Model):
     technika = models.ForeignKey(Technika, on_delete=models.CASCADE)
     leiras = models.CharField(max_length=500)
     eladva = models.BooleanField()
-    kep = models.ImageField(upload_to='upload/')
+    feltoltott_kep = models.ImageField(upload_to='upload/')
 
     def __str__(self):
         return self.cim
