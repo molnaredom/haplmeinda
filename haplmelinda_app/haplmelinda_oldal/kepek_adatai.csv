@@ -8,7 +8,7 @@ Sorszám,Cím,Belső_méret(mag/szél),Külső_méret(mag/szél),Ár,Téma,Techn
 90,Kék pipacs,8.1x25.0,18.4x35.3,30000,virág,...,kész,false
 62,Páva,18.4x23.5,26.9x31.9,30000,állat,porcelán,kész,false
 104,Szellőrózsa,18.1x24.3,25.4x31.2,30000,virág,vászon,...,false
-96,Indák királynője,11.1x20.1,19.8x28.8,30000,női alak,...,...,false
+96,Indák királynője,11.1x20.1,19.8x28.8,30000,női alak,...,kész,false
 100,Fehér virágok (olaj vászon),18.2x24.3,25.3x31.5,30000,virág,vászon,...,false
 102,Fehér pipacs,18.2x24.4,25.3x31.5,30000,virág,vászon,...,false
 31,Pipacs, 16.1x16.1,24.6x24.6,30000,természet,tűzzománc,kész,false
@@ -24,7 +24,7 @@ Sorszám,Cím,Belső_méret(mag/szél),Külső_méret(mag/szél),Ár,Téma,Techn
 40,Magányos fa,6.3x9.2,12.1x15.1,30000,természet,tűzzománc,kész,false
 79,Egymáshoz érve (háttal),24.0x11.6,34.3x17.9,30000,szerelem,...,kész,false
 11,Fénybe néző,9.8x18.9,18.9x27.3,30000,női arc,tűzzománc,kész,false
-86,Mandala 2,23.9x23.9,27.6x27.6,30000,vallási téma,vászon,...,false
+86,Mandala 2,23.9x23.9,27.6x27.6,30000,mandala,fa,...,false
 26,Szent család,24.3x19.8,33.1x28.1,30000,...,tűzzománc,...,false
 17,Szerelem,23.0x17.1,32.4x26.5,30000,szerelem,tűzzománc,kész,false
 82,Ég és föld között,19.8x14,8x34.0x28.0,30000,női alak,fa,...,false
@@ -57,7 +57,7 @@ Sorszám,Cím,Belső_méret(mag/szél),Külső_méret(mag/szél),Ár,Téma,Techn
 38,Indák között,9.2x9.2,15.0x15.0,30000,női alak,tűzzománc,kész,false
 58,Mákvirág 2.,8.8x7.0,11.2x9.2,30000,női alak,porcelán,...,false
 45,Lovas kép 1.,4.4x9.5,10.4x15.4,30000,állat,tűzzománc,kész,false
-55,Régi Magyarország,9.3x13.9,12.9x16.9,30000,?,üveg,kész,false
+506,Régi Magyarország,9.3x13.9,12.9x16.9,30000,?,üveg,kész,false
 41,A nagy fa,5.8x8.9,9.8x13.0,30000,természet,tűzzománc,kész,false
 34,Erdőben,...,...,..,természet,tűzzománc,kész,false
 36,Fa a domboldalon,...,...,..,természet,tűzzománc,kész,false
@@ -74,7 +74,7 @@ Sorszám,Cím,Belső_méret(mag/szél),Külső_méret(mag/szél),Ár,Téma,Techn
 20,Szerelem a tóban,...,...,..,szerelem,tűzzománc,...,false
 29,Tengeri város,...,...,..,természet,tűzzománc,kész,false
 28,Tengerben úszó ember,...,...,..,?,tűzzománc,kész,false
-25,Szent család szamárháton,...,...,..,vallási témájú,tűzzománc,...,false
+25,Szent család szamárháton,...,...,..,vallási témájú,tűzzománc,kész,false
 27,Jézus az olajfánál,...,...,..,vallási témájú,tűzzománc,...,false
 48,Nyári lány 2,...,...,..,női arc,tűzzománc,...,false
 49,Kettes virág,...,...,..,virág,tűzzománc,...,false
@@ -90,29 +90,29 @@ Sorszám,Cím,Belső_méret(mag/szél),Külső_méret(mag/szél),Ár,Téma,Techn
 204,Három jó barát,...,...,..,mese figura,tűzzománc,kész,false
 205,Pingvinek,...,...,..,mese figura,tűzzománc,kész,false
 206,Miki egerek,...,...,..,mese figura,tűzzománc,kész,false
-59,Buddha,...,...,..,vallási téma,porcelán,...,false
+59,Buddha,...,...,..,vallási téma,porcelán,kész,false
 60,Táncoló nő,...,...,..,női alak,porcelán,kész,false
-56,Mini kereszt,...,...,..,vallási témájú,porcelán,...,false
+56,Mini kereszt,...,...,..,vallási témájú,porcelán,kész,false
 66,Turul madár,...,...,..,állat,porcelán,kész,false
 67,Szkítai aranyszarvas 1,...,...,..,állat,porcelán,...,false
 300,Helikopter 1,...,...,..,gép,porcelán,kész,false
 301,Helikopter 2,...,...,..,gép,porcelán,kész,false
 302,Helikopter 3,...,...,..,gép,porcelán,kész,false
 400,Ponty,...,...,..,állat,porcelán,kész,false
-401,Csuka,...,...,..,állat,porcelán,...,false
-402,Harcsa,...,...,..,állat,porcelán,...,false
-403,Fogas süllő,...,...,..,állat,porcelán,...,false
-404,Ponty 2,...,...,..,állat,porcelán,...,false
-500,Éva,...,...,..,női alak,üveg,...,false
+401,Csuka,...,...,..,állat,porcelán,kész,false
+402,Harcsa,...,...,..,állat,porcelán,kész,false
+403,Fogas süllő,...,...,..,állat,porcelán,kész,false
+404,Ponty 2,...,...,..,állat,porcelán,kész,false
+500,Éva,...,...,..,női alak,üveg,kész,false
 501,Szerelmes pár 1,...,...,..,szerelem,üveg,kész,false
-502,Vaddisznó,...,...,..,állat,üveg,...,false
-53,Szerelmes pár 2,...,...,..,szerekem,üveg,...,false
-54,Mákvirág,...,...,..,női alak,üveg,...,false
-52,Távolba néző,...,...,..,női alak,üveg,...,false
+502,Vaddisznó,...,...,..,állat,üveg,kész,false
+53,Szerelmes pár 2,...,...,..,szerelem,üveg,kész,false
+505,Mákvirág,...,...,..,női alak,üveg,kész,false
+504,Távolba néző,...,...,..,női alak,üveg,kész,false
 78,Szerelmes pár,...,...,..,női alak,fa,kész,false
-67,Nő és férfi,...,...,..,?,üveg,...,false
+503,Nő és férfi,...,...,..,?,üveg,kész,false
 69,Buddha 2,...,...,..,Vallási témájú,fa,kész,false
-87,Mandala 3,...,...,..,vallási téma,fa,...,false
+87,Mandala 3,...,...,..,vallási téma,fa,kész,false
 98,Nádasban,...,...,..,természet,fa,...,false
 97,Szív szerelem,...,...,..,szerelem,fa,...,false
 105,Erdő részlet,...,...,..,természet,fa,...,false
@@ -121,7 +121,7 @@ Sorszám,Cím,Belső_méret(mag/szél),Külső_méret(mag/szél),Ár,Téma,Techn
 73,Fa hölgy,...,...,..,női alak,fa,kész,false
 77,Inda hölgy,...,...,..,női alak,fa,kész,false
 75,Szerelem az erdőben,...,...,..,szerelem,fa,kész,false
-81,Csónak,...,...,..,természet,vászon,...,false
+81,Csónak,...,...,..,természet,vászon,kész,false
 106,Vadrózsa,...,...,..,virág,vászon,...,false
 108,Tájkép 1.,...,...,..,természet,vászon,...,false
 109,Tájkép 2.,...,...,..,természet,vászon,...,false
@@ -139,7 +139,11 @@ Sorszám,Cím,Belső_méret(mag/szél),Külső_méret(mag/szél),Ár,Téma,Techn
 46,Lovas kép 2,...,...,..,állat,tűzzománc,...,false
 3,Erdei út, , , ,természet,tűzzománc, ,
 65,Aranyszarvas, , , ,állat,?,kész,
-18,Jézus, , , ,vallási téma,tűzzománc,kész,...,false
-16,Ugró szarvas, , , ,vallási téma,tűzzománc,kész,...,false
-111,Mária, , , ,vallási téma,tűzzománc,kész,...,false
-112,Nap és Hold, , , ,vallási téma,vászon,kész,...,true
+18,Jézus, , , ,vallási téma,tűzzománc,kész,false
+16,Ugró szarvas, , , ,vallási téma,tűzzománc,kész,false
+111,Mária, , , ,vallási téma,tűzzománc,kész,false
+112,Nap és Hold, , , ,vallási téma,vászon,kész,true
+113,Jézus születése, , , ,vallási téma,vászon,kész,false
+114,Élet fája, , , ,természet,fa,kész,false
+115,Szív mandala, , , ,mandala,fa,kész,false
+88,Mandala 4, , , ,természet,fa,kész,false
