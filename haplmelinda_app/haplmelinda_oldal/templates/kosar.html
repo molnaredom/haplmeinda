@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center mt-3">
+    <div class="py-4 mx-5">
+        <h1 class="mb-5">Kosár tartalom</h1>
+
+        <div class="row mb-5">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Termék neve</th>
+                <th scope="col">Ár</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for kep in kosar %}
+            <tr>
+                <th scope="row">
+                    <button type="button" class="btn btn-danger">Törlés</button>
+                </th>
+                <td>{{ kep.cim }}</td>
+                <td>{{ kep.ar }}Ft</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </div>
+</div>
+{% endblock content %}

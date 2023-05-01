@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Kep
+from .models import Kep, Kosar
 from .forms import KepForm
 
 
@@ -30,6 +30,15 @@ def create_kep(request):
 
     context = {'form': form}
     return render(request, "update_kep.html", context)
+
+
+def kosar(request):
+    kosar_tartalom = Kosar.objects.get(user=request.user.id).kepek.all()
+
+    print("KK", kosar_tartalom)
+
+    context = {'kosar': kosar_tartalom}
+    return render(request, "kosar.html", context)
 
 
 def delete_kep(request, id):

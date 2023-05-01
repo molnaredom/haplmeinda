@@ -5,9 +5,13 @@ from django.dispatch import receiver
 
 class Tema(models.Model):
     nev = models.CharField(max_length=200)
+    def __str__(self):
+        return self.nev
 
 class Technika(models.Model):
     nev = models.CharField(max_length=200)
+    def __str__(self):
+        return self.nev
 
 class Kep(models.Model):
     # ne valtoztass a sorrenden
@@ -32,6 +36,9 @@ class Profile (models.Model):
     telefon = models.CharField(max_length=15, blank=True, default="")
     szallitasi_hely = models.CharField(max_length=300, blank=True, default="")
 
+    def __str__(self):
+        return self.teljes_nev
+
 
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
@@ -48,8 +55,8 @@ class Kosar(models.Model): # Kepeket tarol,
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     kepek = models.ManyToManyField(Kep)
 
-    def __str__(self):
-        return f"{self.user.username}'s Chart ({self.photos.count()} photos)"
+    # def __str__(self):
+    #     return f"{self.user.username}'s Chart ({self.photos.count()} photos)"
 
 
 class Rendeles(models.Model):
