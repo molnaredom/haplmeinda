@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Kep, Kosar
-from .forms import KepForm
+from .models import *
+from .forms import *
 
 
 def update_kep(request, id):
@@ -40,7 +40,6 @@ def kosar(request):
     context = {'kosar': kosar_tartalom}
     return render(request, "kosar.html", context)
 
-
 def delete_kep(request, id):
     jegy = Kep.objects.get(id=id)
     if request.method == "POST":
@@ -64,6 +63,15 @@ def album(request):
         if tema_neve:
             kepek = Kep.objects.filter(tema=tema_neve).order_by('?')
             return render(request, 'kepek.html', {'kepek_tomb': kepek})
+    if request.method == 'POST' and 'kosarba' in request.POST:
+        kosar = Kosar.objects.get(user_id=request.user.id)
+        ujkep = Kep.objects.get(id=request.POST["kosarba"])
+
+        kosar_form_obj = KosarForm(instance=kosar).save(commit=False)
+        kosar_form_obj.kepek.add(ujkep.id)
+        kosar_form_obj.save()
+
+        return redirect('kosar')
 
     oszlop1 = kepek.annotate(idmod3=F('id') % 3).filter(idmod3=0)
     oszlop2 = kepek.annotate(idmod3=F('id') % 3).filter(idmod3=1)

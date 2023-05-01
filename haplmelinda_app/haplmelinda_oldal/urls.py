@@ -9,5 +9,6 @@ urlpatterns = [
     path("delete/<str:id>/", views.delete_kep, name="delete_kep"),
     path("update/<str:id>/", views.update_kep, name="update_kep"),
     path("create_kep", views.create_kep, name="create_kep"),
-    path("kosar", views.kosar, name="kosar")
+    path("kosar", views.kosar, name="kosar"),
+    # path("hozzaadas_kosarhoz/<str:id>/", views.hozzaadas_kosarhoz, name="hozzaadas_kosarhoz")
 ]
