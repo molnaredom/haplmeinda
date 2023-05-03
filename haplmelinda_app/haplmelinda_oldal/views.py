@@ -1,7 +1,21 @@
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
+
 from .models import *
 from .forms import *
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
 
+import logging
+
+logger = logging.getLogger('alaplogger')
+
+from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def update_kep(request, id):
     kep_obj = Kep.objects.get(id=id)
@@ -31,6 +45,13 @@ def create_kep(request):
     context = {'form': form}
     return render(request, "update_kep.html", context)
 
+
+def profil(request, username):
+    felhasznalo = User.objects.get(username=username)
+
+    context = {'user': felhasznalo}
+
+    return render(request, "profil.html", context)
 
 def kosar(request):
     kosar_tartalom = Kosar.objects.get(user=request.user.id).kepek.all()
@@ -95,3 +116,71 @@ class EmpImageDisplay(DetailView):
     model = Kep
     template_name = 'emp_image_display.html'
     context_object_name = 'emp'
+
+
+def loginUser(request):
+    page = 'login'
+
+    if request.user.is_authenticated:
+        return redirect('home')
+
+    if request.method == "POST":
+        username = request.POST.get('username').lower()
+        password = request.POST.get('password')
+        try:
+            user = User.objects.get(username=username)
+        except:
+            messages.error(request, "HIBA: A felhsználó még nem létezik")
+
+        user = authenticate(request, username=username, password=password)  # hitelesito adatok
+
+        if user is not None:
+            login(request, user)
+            return redirect('profil', user.username)
+        else:
+            messages.error(request, "A Felhasználónév vagy a jelszó nem létezik")
+
+    context = {"page": page}
+    return render(request, 'login_register.html', context)
+
+@csrf_exempt
+def registerUser(request):
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('profil', user.username)
+        else:
+            messages.error(request, "ERROR: a regisztráció közben")
+
+    return render(request, "login_register.html", {'form': form})
+
+def logoutUser(request):
+    logout(request)
+    return redirect('album')
+
+
+def profil_modositas(request, username):
+    user_form = UserUpdateForm(instance=request.user)
+    profile_form = ProfileUpdateForm(instance=request.user.profile)
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, files=request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            return redirect("profil", str(username))
+        else:
+            context["errorok"] = form.errors
+            return render(request, "profil_modositas.html", context)
+
+    return render(request, "profil_modositas.html", context)
+
