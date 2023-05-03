@@ -16,15 +16,19 @@
             </tr>
             </thead>
             <tbody>
+            <form method="POST" action="">
+                {% csrf_token %}
             {% for kep in kosar %}
             <tr>
                 <th scope="row">
-                    <button type="button" class="btn btn-danger">Törlés</button>
+                    <button class="btn btn-danger" type="submit" name="torles" value="{{kep.id}}">
+                        Törlés</button>
                 </th>
                 <td>{{ kep.cim }}</td>
                 <td>{{ kep.ar }}Ft</td>
             </tr>
             {% endfor %}
+            </form>
             </tbody>
         </table>
             </div>

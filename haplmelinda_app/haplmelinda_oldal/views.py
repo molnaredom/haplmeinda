@@ -35,7 +35,12 @@ def create_kep(request):
 def kosar(request):
     kosar_tartalom = Kosar.objects.get(user=request.user.id).kepek.all()
 
-    print("KK", kosar_tartalom)
+    print("Kosár tartalom: ", kosar_tartalom)
+    if request.method == 'POST' and 'torles' in request.POST:
+        kosar = Kosar.objects.get(user_id=request.user.id)
+        kosar_form_obj = KosarForm(instance=kosar).save(commit=False)
+        kosar_form_obj.kepek.remove(request.POST["torles"])
+        kosar_form_obj.save()
 
     context = {'kosar': kosar_tartalom}
     return render(request, "kosar.html", context)
