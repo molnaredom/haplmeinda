@@ -30,7 +30,7 @@ class Kep(models.Model):
         return self.cim
 
 
-class Profile (models.Model):
+class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     teljes_nev = models.CharField(max_length=200, blank=True, default="")
     telefon = models.CharField(max_length=15, blank=True, default="")

@@ -137,7 +137,7 @@ Sorszám,Cím,Belső_méret(mag/szél),Külső_méret(mag/szél),Ár,Téma,Techn
 89,Kék fa,...,...,30000,természet,fa,...,false
 35,Szerelem az erdőben 2,...,...,30000,természet,tűzzománc,...,false
 46,Lovas kép 2,...,...,30000,állat,tűzzománc,...,false
-3,Erdei út, , ,30000,természet,tűzzománc, ,
+3,Erdei út, , ,30000,természet,tűzzománc,kész,false
 65,Aranyszarvas, , ,30000,állat,?,kész,
 18,Jézus, , ,30000,vallási téma,tűzzománc,kész,false
 16,Ugró szarvas, , ,30000,vallási téma,tűzzománc,kész,false
