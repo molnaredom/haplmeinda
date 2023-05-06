@@ -50,8 +50,8 @@ def eladva(kep):
 #     print(parancs)
 #     cursor.execute(parancs)
 # print(k)
-#
-# technikak = ["fa","tűzzománc","üveg", "vallási téma", "szerelem", "virág", "mese figura", "állat", "mandala", "Egyéb"]
+# #
+# technikak = ["fa","tűzzománc","üveg", "Egyéb"]
 # k = []
 # for i,technika in enumerate(technikak, 1):
 #     k.append((i,technika))
@@ -60,7 +60,7 @@ def eladva(kep):
 #             """
 #     cursor.execute(parancs)
 # print(k)
-#
+
 for i,kep in enumerate(kep_csv_adatok, 1):
     if os.path.exists(f'haplmelinda_app/upload/{kep[0]}.jpg'):
         print(f"[{kep[0]}] Jó :)")

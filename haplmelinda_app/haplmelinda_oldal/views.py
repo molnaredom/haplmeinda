@@ -54,17 +54,54 @@ def profil(request, username):
     return render(request, "profil.html", context)
 
 def kosar(request):
-    kosar_tartalom = Kosar.objects.get(user=request.user.id).kepek.all()
+    kosar_kepek = Kosar.objects.get(profile=request.user.id).kepek.all()
+    kosar = Kosar.objects.get(profile=request.user.id)
 
-    print("Kosár tartalom: ", kosar_tartalom)
+    print("Kosár tartalom: ", kosar_kepek)
     if request.method == 'POST' and 'torles' in request.POST:
-        kosar = Kosar.objects.get(user_id=request.user.id)
         kosar_form_obj = KosarForm(instance=kosar).save(commit=False)
         kosar_form_obj.kepek.remove(request.POST["torles"])
         kosar_form_obj.save()
 
-    context = {'kosar': kosar_tartalom}
+    elif request.method == 'POST' and 'rendeles' in request.POST:
+
+        form = RendelesForm().save(commit=False)
+        # print(kosar.id)
+        form.kosar = kosar
+        # for i in kosar.kepek.all():
+        #     print(i)
+        #     print(i.ar)
+        # print([int(i.ar) for i in kosar.kepek.all()])
+        # print(sum([int(i.ar) for i in kosar.kepek.all()])*1.0)
+        ossz_ar = sum([int(i.ar) for i in kosar.kepek.all()])
+        form.total_price = ossz_ar
+        form.save()
+        # if form.is_valid():
+        #     pass
+        # else:
+        #     print("*******************")
+        #     print(form.errors)
+        #     print("*******************")
+        context = {'kosar': kosar_kepek}
+        return redirect("rendeles")
+
+    context = {'kosar': kosar_kepek}
     return render(request, "kosar.html", context)
+
+
+def rendeles(request):
+    rendeles = Rendeles.objects.get(kosar=request.user.id)
+    profile = Profile.objects.get(id=request.user.id)
+    print(rendeles.total_price)
+    print(rendeles.pk)
+    print(rendeles.kosar)
+    print(" ****************")
+    print(profile.szallitasi_hely)
+    if request.method == 'POST' and 'rendeles_leadas' in request.POST:
+        rendeles.delete()
+        return redirect("album")
+
+    return render(request, "rendeles.html", {"rendeles":rendeles, "profile": profile})
 
 def delete_kep(request, id):
     jegy = Kep.objects.get(id=id)
@@ -90,7 +127,7 @@ def album(request):
             kepek = Kep.objects.filter(tema=tema_neve).order_by('?')
             return render(request, 'kepek.html', {'kepek_tomb': kepek})
     if request.method == 'POST' and 'kosarba' in request.POST:
-        kosar = Kosar.objects.get(user_id=request.user.id)
+        kosar = Kosar.objects.get(profile=request.user.id)
         ujkep = Kep.objects.get(id=request.POST["kosarba"])
 
         kosar_form_obj = KosarForm(instance=kosar).save(commit=False)

@@ -16,6 +16,13 @@ class KosarForm(ModelForm):
         model = Kosar
         fields = "__all__"
 
+
+class RendelesForm(ModelForm):
+    class Meta:
+        model = Rendeles
+        fields = ["kosar", "total_price"]
+
+
 class UserUpdateForm(UserCreationForm):
     class Meta:
         model = User

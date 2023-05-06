@@ -10,6 +10,7 @@ urlpatterns = [
     path("update/<str:id>/", views.update_kep, name="update_kep"),
     path("create_kep", views.create_kep, name="create_kep"),
     path("kosar", views.kosar, name="kosar"),
+    path("rendeles", views.rendeles, name="rendeles"),
     path("loginUser", views.loginUser, name="loginUser"),
     path("logoutUser", views.logoutUser, name="logoutUser"),
     path("registerUser", views.registerUser, name="registerUser"),

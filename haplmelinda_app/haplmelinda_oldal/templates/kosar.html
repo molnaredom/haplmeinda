@@ -3,7 +3,7 @@
 <div class="text-center mt-3">
     <div class="py-4 mx-5">
         <h1 class="mb-5">Kosár tartalom</h1>
-
+<form method="POST" action="">
         <div class="row mb-5">
             <div class="col-2"></div>
             <div class="col-8">
@@ -16,7 +16,7 @@
             </tr>
             </thead>
             <tbody>
-            <form method="POST" action="">
+
                 {% csrf_token %}
             {% for kep in kosar %}
             <tr>
@@ -28,13 +28,15 @@
                 <td>{{ kep.ar }}Ft</td>
             </tr>
             {% endfor %}
-            </form>
+
             </tbody>
         </table>
+                <button class="btn btn-success px-5 py-3 mt-5" type="submit" name="rendeles">
+                    Rendelés</button>
             </div>
             <div class="col-2"></div>
         </div>
-
+</form>
 
         <br>
         <br>
