@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <html lang="en" class="h-100">
+    <main class="px-3 bg-dark d-flex d-flex h-100 text-center text-white bg-dark">
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            {% if page == 'login' %}
+                <div>
+                    <div>
+                        <h1 class="text-white p-5">Belépés</h1>
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <div>
+                                <label class="text-white">Falhasználónév:</label>
+                                <input type="text" name="username" placeholder="Add meg a felhasználóneved"/>
+                            </div>
+                            <div>
+                                <label class="text-white">Jelszó:</label>
+                                <input type="password" name="password" placeholder="Add meg a jelszavad"/>
+                            </div>
+                            <br><br>
+                            <button type="submit" name="Login" class="btn btn-success btn-lg">Belépés</button>
+                        </form>
+                        <br><br>
+                        <p class="text-white">Még nem vagy regisztrálva?</p>
+                        <br><br>
+                        <button type="button" class="btn btn-light btn-sm"><a
+                                href="{% url 'registerUser' %}">Regisztráció</a></button>
+                        <br><br>
+
+                    </div>
+    {% else %}
+                    <div>
+                        <form method="POST" class="mb-5" action="">
+                            {% csrf_token %}
+                            <h1 class="text-center text-white pt-5 pb-2">Regisztráció</h1>
+
+                            <div class="py-3">
+                                <input type="hidden" name="csrfmiddlewaretoken"
+                                       value="2GCMFff47FZFWcyOhAe3yL5fO1bMykbyagslHhLArqWqMKLN6KbvOg9SOxzSBXgc">
+                                <p><label class="text-white" for="id_username">Felhasználónév: </label> <input
+                                        type="text" name="username"
+                                        maxlength="150" autocapitalize="none"
+                                        autocomplete="username" autofocus=""
+                                        required="" id="id_username">
+                                </p>
+                                <span class="helptext text-white">Maximum 150 karakter. Betűk számok és @/./+/-/_ karakterek használhatóak.</span>
+                            </div>
+                            <div class="py-3">
+                                <p><label class="text-white" for="id_password1">Jelszó: </label> <input type="password"
+                                                                                                        name="password1"
+                                                                                                        autocomplete="new-password"
+                                                                                                        required=""
+                                                                                                        id="id_password1">
+                                    <span
+                                            class="helptext"></span></p>
+                                <ul>
+                                    <li class="text-white">A jelszavad nem hasonlíthat a felhasználónevedre</li>
+                                    <li class="text-white">Minimum 8 karaktert tartalmaznia kell</li>
+                                    <li class="text-white">Nem lehet sokak által használt egyszerű jelszó</li>
+                                    <li class="text-white">Nem tartalmazhat csak számokat</li>
+                                </ul>
+
+                                <div class="py-2">
+                                    <p><label for="id_password2" class="text-white">Jelszó újra: </label> <input
+                                            type="password"
+                                            name="password2"
+                                            autocomplete="new-password"
+                                            required=""
+                                            id="id_password2">
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button type="submit" name="Register" class="btn btn-success btn-lg">Regisztráció</button>
+                        </form>
+
+                        <p class="text-white mb-3">Már regisztráltál?</p>
+                        <button type="button" class="btn btn-light btn-sm mb-5"><a href="{% url 'loginUser' %}">Belépés</a>
+                        </button>
+
+                    </div>
+
+
+                </div>
+            {% endif %}
+
+        </div>
+    </main>
+    </html>
+{% endblock content %}
+
+

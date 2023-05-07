@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div class="center">
+        <div class="pb-3"></div>
+        {% if errorok %}
+            <div class="m-3 bg-danger ">{{ errorok }}</div>
+        {% endif %}
+        <form method="POST" enctype="multipart/form-data" action="">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12 mb-2">
+                    <div class="card my-5">
+                        <h4 class="text-center my-4">@{{ user.username }} profil módosítás</h4>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        {{ profile_form.as_p }}
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+{% if errorok %}
+            <div class="m-3 bg-danger ">{{ errorok }}</div>
+        {% endif %}
+                <div class="d-grid gap-2">
+                    <button type="submit" name="profil_mentes" class="btn btn-success p-4 my-3">Mentés</button>
+                </div>
+                </div>
+        </form>
+    </div>
+
+{% endblock content %}

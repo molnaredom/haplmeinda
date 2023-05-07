@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center mt-3">
+    <div class="py-4 mx-5">
+        <h1 class="mb-5">Rendelés tartalom</h1>
+        <form method="POST" action="">
+            <div class="row mb-5">
+                <div class="col-1"></div>
+                <div class="col-5">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Termék neve</th>
+                            <th scope="col">Ár</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% csrf_token %}
+                        {% for kep in rendeles.kosar.kepek.all %}
+                        <tr>
+                            <td>{{ kep.cim }}</td>
+                            <td>{{ kep.ar }}Ft</td>
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-5">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Teljes név</th>
+                            <th scope="col">Szállítási cím</th>
+                            <th scope="col">Telefonszám</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% csrf_token %}
+                        <tr>
+
+                            <td>{{ rendeles.kosar.profile.teljes_nev }}
+                                {% if not rendeles.kosar.profile.teljes_nev %}
+                                Nincs még megadva a neved<br>
+                                <a href="{% url 'profil' request.user.username %}">Adatok módosítása</a>
+                                {% endif %}
+                            </td>
+                            <td>{{ rendeles.kosar.profile.szallitasi_hely }}
+                                {% if not rendeles.kosar.profile.szallitasi_hely %}
+                                Nincs még megadva a szállítási címed <br>
+                                <a href="{% url 'profil' request.user.username %}">Adatok módosítása</a>
+                                {% endif %}
+                            </td>
+                            <td>{{ rendeles.kosar.profile.telefon }}
+                                {% if not rendeles.kosar.profile.telefon %}
+                                Nincs még megadva a telefonszámod<br>
+                                <a href="{% url 'profil' request.user.username %}">Adatok módosítása</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-1"></div>
+                <b>Összesen: {{ rendeles.total_price }}Ft</b>
+
+                    <button class="btn btn-success py-3 mt-5" type="submit" name="rendeles_leadas">
+                        Rendelés
+                    </button>
+            </div>
+        </form>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </div>
+</div>
+{% endblock content %}

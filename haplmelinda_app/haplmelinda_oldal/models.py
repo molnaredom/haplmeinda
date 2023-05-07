@@ -5,9 +5,13 @@ from django.dispatch import receiver
 
 class Tema(models.Model):
     nev = models.CharField(max_length=200)
+    def __str__(self):
+        return self.nev
 
 class Technika(models.Model):
     nev = models.CharField(max_length=200)
+    def __str__(self):
+        return self.nev
 
 class Kep(models.Model):
     # ne valtoztass a sorrenden
@@ -26,11 +30,6 @@ class Kep(models.Model):
         return self.cim
 
 
-class Profile (models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    teljes_nev = models.CharField(max_length=200, blank=True, default="")
-    telefon = models.CharField(max_length=15, blank=True, default="")
-    szallitasi_hely = models.CharField(max_length=300, blank=True, default="")
 
 
 @receiver(post_save, sender=User)
@@ -43,20 +42,27 @@ def create_profile(sender, instance, created, **kwargs):
 def save_profile(sender, instance, **kwargs):
     instance.profile.save()
 
-
-class Kosar(models.Model): # Kepeket tarol,
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    kepek = models.ManyToManyField(Kep)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    teljes_nev = models.CharField(max_length=200, blank=True, default="")
+    telefon = models.CharField(max_length=15, blank=True, default="")
+    szallitasi_hely = models.CharField(max_length=300, blank=True, default="")
 
     def __str__(self):
-        return f"{self.user.username}'s Chart ({self.photos.count()} photos)"
+        return self.teljes_nev
+
+
+class Kosar(models.Model): # Kepeket tarol,
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    kepek = models.ManyToManyField(Kep)
+
+    # def __str__(self):
+    #     return f"{self.user.username}'s Chart ({self.photos.count()} photos)"
 
 
 class Rendeles(models.Model):
-    customer = models.ForeignKey(Profile, on_delete=models.CASCADE)
     kosar = models.ForeignKey(Kosar, on_delete=models.CASCADE)
-    total_price = models.DecimalField(max_digits=7, decimal_places=2)
-    created_at = models.DateTimeField(auto_now_add=True)
+    total_price = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"{self.quantity} x {self.photo.title} by {self.customer.name}"
+        return f"k{self.kosar}"

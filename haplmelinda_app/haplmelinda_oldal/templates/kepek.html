@@ -5,12 +5,12 @@
 
 <style>
     .img-max {
-      /*max-height: 500px;*/
-      height:25%;
+        /*max-height: 500px;*/
+        height: 25%;
         display: block;
-      margin-left: auto;
-      margin-right: auto;
-  /*width: 50%;*/
+        margin-left: auto;
+        margin-right: auto;
+        /*width: 50%;*/
     }
 </style>
 
@@ -20,43 +20,54 @@
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light">Hápl Melinda Festményei</h1>
-                <p class="lead text-muted">Mikor alkotok, egy másik világban érzem magam, az ecsetemmel húzott vonalak nem csak a vászonra varázsolnak színt, hanem a hétköznapjaimba is. Remélem, hogy ezeket a színeket át tudom adni az érdeklődőknek, hogy ők is elmélyülhessenek a természet, az érzelmek és a sokféleség világában.</p>
+                <p class="lead text-muted">Mikor alkotok, egy másik világban érzem magam, az ecsetemmel húzott vonalak
+                    nem csak a vászonra varázsolnak színt, hanem a hétköznapjaimba is. Remélem, hogy ezeket a színeket
+                    át tudom adni az érdeklődőknek, hogy ők is elmélyülhessenek a természet, az érzelmek és a sokféleség
+                    világában.</p>
             </div>
         </div>
     </section>
-<div class="bg-info p-5 rounded">
-    <form method="POST" action="">
-        {% csrf_token %}
-        <label for="tema">Válasszon egy témát:</label>
-        <select name="tema" id="tema">
-            <option value="">Minden téma</option>
-            <option value="természet">Természet</option>
-            <option value="női alak">Női alak</option>
-            <option value="virág">Virág</option>
-            <option value="szerelem">Szerelem</option>
-            <option value="vallási téma">Vallási téma</option>
-        </select>
-        <button type="submit">Szűrés</button>
-    </form>
-    {% if request.user.is_superuser %}
-    <a href="{% url 'create_kep' %}" type="button" class="btn btn-success">+ Új kép hozzáadása</a>
-    {% endif %}
-</div>
+    <div class="bg-info p-5 rounded">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <label for="tema">Válasszon egy témát:</label>
+            <select name="tema" id="tema">
+                <option value="">Minden téma</option>
+                <option value="3">Természet</option>
+                <option value="1">Női alak</option>
+                <option value="2">Női arc</option>
+                <option value="6">Virág</option>
+                <option value="5">Szerelem</option>
+                <option value="4">Vallási téma</option>
+                <option value="8">Állat</option>
+                <option value="9">Mandala</option>
+                <option value="10">Egyéb</option>
+            </select>
+            <button type="submit">Szűrés</button>
+        </form>
+        {% if request.user.is_superuser %}
+        <a href="{% url 'create_kep' %}" type="button" class="btn btn-success">+ Új kép hozzáadása</a>
+        {% endif %}
+    </div>
     <div class="album py-5 bg-light">
         <!-- Gallery -->
         <div class="row">
             <div class="col-lg-4 mb-4 mb-lg-0">
                 {% for i in o1 %}
                 <div class="card shadow-sm">
-                    <img src="{{i.kep.url}}" class="card-img-top img-max"/>
+                    <img src="{{i.feltoltott_kep.url}}" class="card-img-top img-max"/>
                     <div class="card-body">
                         <h3 class="card-text">{{ i.cim }}</h3>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href="{% url 'kep_reszletek' i.id %}" class="btn btn btn-success">Megtekintés</a>
                                 <button type="button" class="btn btn-sm btn-outline-success">{{ i.ar }}Ft</button>
+                                <form method="POST" action="">
+                                    {% csrf_token %}
+                                    <button class="btn btn btn-success" type="submit" name="kosarba" value="{{i.id}}">
+                                        + Kosárba </button>
+                                </form>
                             </div>
-                            <!--                <small class="text-muted">9 mins</small>-->
                         </div>
                     </div>
                 </div>
@@ -66,13 +77,18 @@
             <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                 {% for i in o2 %}
                 <div class="card shadow-sm">
-                    <img src="{{i.kep.url}}" class="card-img-top img-max"/>
+                    <img src="{{i.feltoltott_kep.url}}" class="card-img-top img-max"/>
                     <div class="card-body">
                         <h3 class="card-text">{{ i.cim }}</h3>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href="{% url 'kep_reszletek' i.id %}" class="btn btn btn-success">Megtekintés</a>
                                 <button type="button" class="btn btn-sm btn-outline-success">{{ i.ar }}Ft</button>
+                                <form method="POST" action="">
+                                    {% csrf_token %}
+                                    <button class="btn btn btn-success" type="submit" name="kosarba" value="{{i.id}}">
+                                        + Kosárba </button>
+                                </form>
                             </div>
                             <!--                <small class="text-muted">9 mins</small>-->
                         </div>
@@ -84,13 +100,18 @@
             <div class="col-lg-4 mb-4 mb-lg-0">
                 {% for i in o3 %}
                 <div class="card shadow-sm">
-                    <img src="{{i.kep.url}}" class="card-img-top img-max"/>
+                    <img src="{{i.feltoltott_kep.url}}" class="card-img-top img-max"/>
                     <div class="card-body">
                         <h3 class="card-text">{{ i.cim }}</h3>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href="{% url 'kep_reszletek' i.id %}" class="btn btn btn-success">Megtekintés</a>
                                 <button type="button" class="btn btn-sm btn-outline-success">{{ i.ar }}Ft</button>
+                                <form method="POST" action="">
+                                    {% csrf_token %}
+                                    <button class="btn btn btn-success" type="submit" name="kosarba" value="{{i.id}}">
+                                        + Kosárba </button>
+                                </form>
                             </div>
                             <!--                <small class="text-muted">9 mins</small>-->
                         </div>

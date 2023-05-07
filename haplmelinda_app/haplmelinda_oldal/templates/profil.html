@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row m-5">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="mt-3">
+            <h4>Felhasználónév: {{ user.username }}</h4>
+            {% if user.profile.szallitasi_hely %}
+            <p class="text-muted font-size-sm">Szállítási hely: {{ user.profile.szallitasi_hely }}</p>
+            {% else %}
+            <p class="text-muted font-size-sm">Szállítási hely: Még nincs megadva</p>
+            {% endif %}
+
+            {% if user.profile.telefon %}
+            <p class="text-muted font-size-sm">Telefonszám: {{ user.profile.telefon }}</p>
+            {% else %}
+            <p class="text-muted font-size-sm">Telefonszám: Még nincs megadva</p>
+            {% endif %}
+
+            {% if user.profile.teljes_nev %}
+            <p class="text-muted font-size-sm">Teljes név: {{ user.profile.teljes_nev }}</p>
+            {% else %}
+            <p class="text-muted font-size-sm">Teljes név: Még nincs megadva</p>
+            {% endif %}
+
+            {% if request.user == user %}
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-info " target="__blank"
+                                          href="{% url 'profil_modositas' request.user %}"
+                        >Adatok módostása</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+{% endblock content %}
