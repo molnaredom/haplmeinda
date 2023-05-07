@@ -1,7 +1,3 @@
-from django.shortcuts import render, redirect
-from django.views.decorators.csrf import csrf_exempt
-
-from .models import *
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -14,8 +10,6 @@ import logging
 
 logger = logging.getLogger('alaplogger')
 
-from django.views import View
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 def update_kep(request, id):
     kep_obj = Kep.objects.get(id=id)
@@ -34,11 +28,18 @@ def update_kep(request, id):
 def create_kep(request):
     form = KepForm()
     if request.method == "POST":
+        print(request.POST)
         form = KepForm(data=request.POST, files=request.FILES)
         if form.is_valid():
-            form.save()
-            print("Sikeres Kép készítés")
-            return redirect("album")
+            form.save(commit=False)
+            form.technika = int(request.POST["technika"])
+            form.tema = int(request.POST["tema"])
+            if form.is_valid():
+
+                form.save()
+                print("Sikeres Kép készítés")
+                return redirect("album")
+            print(form.errors)
         else:
             print("Nem valid a form")
 
@@ -66,23 +67,10 @@ def kosar(request):
     elif request.method == 'POST' and 'rendeles' in request.POST:
 
         form = RendelesForm().save(commit=False)
-        # print(kosar.id)
         form.kosar = kosar
-        # for i in kosar.kepek.all():
-        #     print(i)
-        #     print(i.ar)
-        # print([int(i.ar) for i in kosar.kepek.all()])
-        # print(sum([int(i.ar) for i in kosar.kepek.all()])*1.0)
         ossz_ar = sum([int(i.ar) for i in kosar.kepek.all()])
         form.total_price = ossz_ar
         form.save()
-        # if form.is_valid():
-        #     pass
-        # else:
-        #     print("*******************")
-        #     print(form.errors)
-        #     print("*******************")
-        context = {'kosar': kosar_kepek}
         return redirect("rendeles")
 
     context = {'kosar': kosar_kepek}
@@ -92,11 +80,6 @@ def kosar(request):
 def rendeles(request):
     rendeles = Rendeles.objects.get(kosar=request.user.id)
     profile = Profile.objects.get(id=request.user.id)
-    print(rendeles.total_price)
-    print(rendeles.pk)
-    print(rendeles.kosar)
-    print(" ****************")
-    print(profile.szallitasi_hely)
     if request.method == 'POST' and 'rendeles_leadas' in request.POST:
         rendeles.delete()
         return redirect("album")
@@ -118,14 +101,11 @@ def kep_reszletek(request, id):
 from django.db.models import F
 def album(request):
     kepek = Kep.objects.all().order_by('?')
-    print(request.POST)
+
     if request.method == 'POST' and 'tema' in request.POST:
-        print("Téma alapján szűrés:", request.POST)
-        tema_neve = request.POST["tema"]
-        print(tema_neve)
-        if tema_neve:
-            kepek = Kep.objects.filter(tema=tema_neve).order_by('?')
-            return render(request, 'kepek.html', {'kepek_tomb': kepek})
+        tema_id = request.POST["tema"]
+        if tema_id:
+            kepek = Kep.objects.filter(tema=int(tema_id)).order_by('?')
     if request.method == 'POST' and 'kosarba' in request.POST:
         kosar = Kosar.objects.get(profile=request.user.id)
         ujkep = Kep.objects.get(id=request.POST["kosarba"])

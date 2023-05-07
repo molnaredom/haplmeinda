@@ -47,8 +47,8 @@
                                 <a href="{% url 'profil' request.user.username %}">Adatok módosítása</a>
                                 {% endif %}
                             </td>
-                            <td>{{ rendeles.kosar.profile.szallitasi_cim }}
-                                {% if not rendeles.kosar.profile.szallitasi_cim %}
+                            <td>{{ rendeles.kosar.profile.szallitasi_hely }}
+                                {% if not rendeles.kosar.profile.szallitasi_hely %}
                                 Nincs még megadva a szállítási címed <br>
                                 <a href="{% url 'profil' request.user.username %}">Adatok módosítása</a>
                                 {% endif %}
