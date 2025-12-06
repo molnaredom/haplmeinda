@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build output
+dist/
+build/
+*.bundle.js
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Astro (ha később hozzáadod)
+faithful-field/
+.astro/
+
+# Temp files
+*.tmp
+*.temp
+.cache
+
+# Test results
+coverage/
+.nyc_output/

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Heredi porcelán és festészeti alkotások - Művészi kézmunkák"
+    />
+    <meta
+      name="keywords"
+      content="porcelán festés, tűzzománc, festészet, kézmunka, HereNagy Margit"
+    />
+    <title>Heredi Műhely - Porcelán & Festészeti Művek</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigáció -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">🎨 Heredi Műhely</div>
+        <ul class="nav-links">
+          <li><a href="#home">Kezdőoldal</a></li>
+          <li><a href="#about">Rólam</a></li>
+          <li><a href="#gallery">Galéria</a></li>
+          <li><a href="#contact">Kapcsolat</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Heredi Műhely</h1>
+        <p class="subtitle">Porcelán- és tűzzománc-festési műalkotások</p>
+        <a href="#gallery" class="cta-button">Nézz meg alkotásokat</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image">
+            <img
+              src="fenykepek/anya_kep.jpg"
+              alt="Heredi műhely"
+              loading="lazy"
+            />
+          </div>
+          <div class="about-text">
+            <h2>Rólam</h2>
+            <p>
+              Már középskolában kezdtem el a porcelán festéssel. Az évek során
+              kialakult egy egyedi stílus, amely a természet, az emberek és a
+              spirituális motívumok harmóniáját tükrözi.
+            </p>
+            <p>
+              Elsősorban tűzzománc és porcelán festéssel dolgozom, de szívesen
+              kísérletezek más technikákkal is. Minden munka egyedi és szívből
+              készült.
+            </p>
+            <div class="techniques">
+              <h3>Technikák:</h3>
+              <div class="tech-tags">
+                <span class="tag">Tűzzománc</span>
+                <span class="tag">Porcelán</span>
+                <span class="tag">Fa</span>
+                <span class="tag">Vászon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+      <div class="container">
+        <h2>Galéria</h2>
+        <div class="gallery-filters">
+          <button class="filter-btn active" data-filter="all">Összes</button>
+          <button class="filter-btn" data-filter="tűzzománc">Tűzzománc</button>
+          <button class="filter-btn" data-filter="porcelán">Porcelán</button>
+          <button class="filter-btn" data-filter="fa">Fa</button>
+          <button class="filter-btn" data-filter="vászon">Vászon</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- JS-sel töltődik fel -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Gallery - Kezdőoldali gallériához -->
+    <section class="featured-gallery">
+      <div class="container">
+        <h2>Kiemelt Művek</h2>
+        <div class="featured-grid" id="featuredGallery">
+          <!-- JS-sel töltődik fel -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Kapcsolat</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <h3>📍 Hely</h3>
+            <p>Herecsény, Magyarország</p>
+          </div>
+          <div class="contact-item">
+            <h3>📧 Email</h3>
+            <p><a href="mailto:info@example.com">info@example.com</a></p>
+          </div>
+          <div class="contact-item">
+            <h3>📱 Telefon</h3>
+            <p>+36 XX XXX XXXX</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Heredi Műhely. Minden jog fenntartva.</p>
+      </div>
+    </footer>
+
+    <!-- Modal for image details -->
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage" src="" alt="" />
+      <div id="modalCaption"></div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

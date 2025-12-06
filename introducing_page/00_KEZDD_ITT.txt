@@ -1,0 +1,123 @@
+Subject: ✨ Az új weboldal kész! - Heredi Műhely
+
+---
+
+Szia Margit!
+
+Elkészült az új bemutatkozó weboldal! 🎨
+
+## 📍 Mi van fenn az oldalon?
+
+✅ **Kezdőoldal** - Szép hero szekció + rólam rész  
+✅ **Galéria** - 50+ kép, szűrhető kategóriák  
+✅ **Responsív design** - Szép mobil, tablet, PC-n  
+✅ **Villámgyors betöltés** - Képek csak akkor töltenek, ha szükséges  
+✅ **SEO-optimalizált** - Google keresésekben megjelenik
+
+## 🚀 Hogyan használd?
+
+### 1. Helyi teszteléshez:
+```bash
+# Megnyitod a mappát és futtatod:
+python -m http.server 8000
+# Majd a böngészőben: http://localhost:8000
+```
+
+### 2. Rackhostos szerverre telepítéshez:
+- Nézd meg a `DEPLOYMENT.md` fájlt
+- FTP-vel fel kell tölteni az összes fájlt az `/web/` mappába
+- 15 perc munka, akkor már élő az oldal!
+
+## 📁 Projekt fájlok
+
+```
+introducing_page/
+├── index.html          ← Az oldal
+├── styles.css          ← Design
+├── script.js           ← Interaktivitás
+├── data.js             ← Képadatok
+├── .htaccess           ← Szerver beállítások
+├── fenykepek/          ← Képek mappája (61 kép)
+├── README.md           ← Részletes info
+├── DEPLOYMENT.md       ← Telepítés útmutató
+├── SETUP.md            ← Testreszabás útmutató
+├── QUICKSTART.md       ← Gyors start
+├── IMAGES.md           ← Képek inventory
+└── package.json        ← NPM config
+```
+
+## ✏️ Szövegek szerkesztése
+
+Az `index.html` fájlt nyitod meg egy szövegszerkesztővel:
+- VS Code (javasolt)
+- Notepad++
+- vagy akár Notepad
+
+**Ezek módosíthatók:**
+- Kontakt infó (email, telefon)
+- Rólam szöveg
+- Képek
+- Szín séma
+- Betűtípus
+
+Lásd: `SETUP.md` fájl
+
+## 🖼️ Új képek hozzáadása
+
+1. Helyezd be a képet a `fenykepek/` mappába (pl: `120.jpg`)
+2. Nyisd meg a `data.js` fájlt, add hozzá az új képet
+3. Módosítsd a `script.js` fájlt az `availableIds` tömböt
+4. Kész! ✨
+
+## 📊 Teljesítmény
+
+- **Oldalbetöltési idő**: < 1 másodperc
+- **Képbetöltés**: Lazy loading (csak a látható képek)
+- **Gzip tömörítés**: Automatikus
+- **Gyorsítótár**: 1 év képekhez
+
+## 🎯 Következő lépések
+
+1. **Szövegek módosítása** (`index.html`)
+   - Kontakt infó beírása
+   - Rólad szöveg személyre szabása
+
+2. **Design testreszabása** (`styles.css`)
+   - Szín séma (ha nem tetszik a jelenlegi)
+   - Betűtípus
+
+3. **Rackhostos telepítés** (ha kész)
+   - Nézd meg a `DEPLOYMENT.md` fájlt
+   - FTP-vel feltöltés
+
+4. **SEO javítása** (opcionális)
+   - Google Analytics
+   - Meta tagek
+   - Képek alt szövegei
+
+## 📞 Támogatás
+
+- **Dokumentáció**: `README.md`
+- **Telepítés**: `DEPLOYMENT.md`
+- **Testreszabás**: `SETUP.md`
+- **Gyors start**: `QUICKSTART.md`
+- **Képek listája**: `IMAGES.md`
+
+## 🎉 Összegzés
+
+Az oldal **teljesen statikus** - nincsenek adatbázisok, nincs szerveroldalas feldolgozás.
+Nagyon gyors, biztonságos és könnyű fenntartani.
+
+Akár több év múlva is működni fog probléma nélkül! 🚀
+
+---
+
+**Készítette:** Bence  
+**Dátum:** 2025. december 4.  
+**Verzió:** 1.0
+
+---
+
+Ha kérdésed van, írj!
+
+💡 **Tipp:** Mentsd el ezeket a dokumentációt - később visszanézhetsz, ha szerkeszteni szeretnél!
