@@ -1,25 +1,32 @@
 // Gallery filtering and rendering
 let currentFilter = "all";
+let availableIds = [];
 
 // Get gallery items that have actual image files
-function getAvailableImages() {
-  // Ezek az ID-k vannak a fenykepek mappában
-  const availableIds = [
-    1, 2, 5, 7, 8, 9, 10, 11, 12, 13, 15, 17, 21, 23, 24, 26, 30, 31, 33, 34,
-    38, 40, 41, 42, 45, 55, 57, 58, 61, 62, 63, 64, 65, 70, 71, 72, 73, 74, 75,
-    76, 77, 79, 82, 83, 84, 85, 86, 9, 90, 91, 95, 96, 100, 101, 102, 103, 104,
-    105, 107, 1002, 1003, 1005, 1033, 1036, 1037,
-  ];
+async function getAvailableImages() {
+  // Ha még nincs betöltve, betöltjük az available-images.json-t
+  if (availableIds.length === 0) {
+    try {
+      const response = await fetch("available-images.json");
+      const data = await response.json();
+      availableIds = data.availableIds;
+      console.log(`Loaded ${availableIds.length} available images`);
+    } catch (error) {
+      console.error("Error loading available images list:", error);
+      // Fallback: üres lista, nem lesz megjelenítve egyetlen kép sem
+      availableIds = [];
+    }
+  }
 
   return GALLERY.filter((item) => availableIds.includes(item.id));
 }
 
 // Render gallery
-function renderGallery(filter = "all") {
+async function renderGallery(filter = "all") {
   const gallery = document.getElementById("galleryGrid");
   if (!gallery) return;
 
-  const availableItems = getAvailableImages();
+  const availableItems = await getAvailableImages();
   let items = availableItems;
 
   if (filter !== "all") {
@@ -66,11 +73,11 @@ function renderGallery(filter = "all") {
 }
 
 // Render featured gallery
-function renderFeaturedGallery() {
+async function renderFeaturedGallery() {
   const featured = document.getElementById("featuredGallery");
   if (!featured) return;
 
-  const availableItems = getAvailableImages();
+  const availableItems = await getAvailableImages();
   // Válassz véletlenszerűen, de konzisztensen (seed-alapú)
   const selectedItems = availableItems
     .slice()
@@ -127,7 +134,7 @@ function closeModal() {
 function setupFilters() {
   const filterBtns = document.querySelectorAll(".filter-btn");
   filterBtns.forEach((btn) => {
-    btn.addEventListener("click", function () {
+    btn.addEventListener("click", async function () {
       // Remove active class from all buttons
       filterBtns.forEach((b) => b.classList.remove("active"));
       // Add active class to clicked button
@@ -135,7 +142,7 @@ function setupFilters() {
 
       const filter = this.getAttribute("data-filter");
       currentFilter = filter;
-      renderGallery(filter);
+      await renderGallery(filter);
     });
   });
 }
@@ -208,12 +215,13 @@ function optimizeImages() {
 }
 
 // Initialize on DOM ready
-function init() {
+async function init() {
   console.log("Initializing gallery...");
-  console.log(`Available items: ${getAvailableImages().length}`);
+  const images = await getAvailableImages();
+  console.log(`Available items: ${images.length}`);
 
-  renderGallery("all");
-  renderFeaturedGallery();
+  await renderGallery("all");
+  await renderFeaturedGallery();
   setupFilters();
   setupModalEvents();
   setupSmoothScroll();
