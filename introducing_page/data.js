@@ -1,9 +1,9 @@
 // Képek adatai - CSV-ből konvertálva
-// Sorszám,Cím,Belső_méret(mag/szél),Külső_méret(mag/szél),Ár,Téma,Technika,Leírás,Eladva
+// Ha a képek máshogy vannak elnevezve, itt módosítsd az id értékeket
 
 const galleryData = [
   {
-    id: 107,
+    id: 107, // vagy a tényleges fájlnév (pl. "erdoben_nappall_es_ejjel")
     title: "Erdőben nappal és éjjel",
     size: "39.0x29.0",
     externalSize: "42.9x22.8",

@@ -130,37 +130,16 @@ function initTextShimmer() {
 
 // Gallery filtering and rendering
 let currentFilter = "all";
-let availableIds = [];
-
-// Get gallery items that have actual image files
-async function getAvailableImages() {
-  // Ha még nincs betöltve, betöltjük az available-images.json-t
-  if (availableIds.length === 0) {
-    try {
-      const response = await fetch("available-images.json");
-      const data = await response.json();
-      availableIds = data.availableIds;
-      console.log(`Loaded ${availableIds.length} available images`);
-    } catch (error) {
-      console.error("Error loading available images list:", error);
-      // Fallback: üres lista, nem lesz megjelenítve egyetlen kép sem
-      availableIds = [];
-    }
-  }
-
-  return GALLERY.filter((item) => availableIds.includes(item.id));
-}
 
 // Render gallery
-async function renderGallery(filter = "all") {
+function renderGallery(filter = "all") {
   const gallery = document.getElementById("galleryGrid");
   if (!gallery) return;
 
-  const availableItems = await getAvailableImages();
-  let items = availableItems;
+  let items = GALLERY;
 
   if (filter !== "all") {
-    items = availableItems.filter(
+    items = GALLERY.filter(
       (item) => item.technique.toLowerCase() === filter.toLowerCase()
     );
   }
@@ -252,16 +231,12 @@ if (!document.querySelector("style[data-particles]")) {
 }
 
 // Render featured gallery
-async function renderFeaturedGallery() {
+function renderFeaturedGallery() {
   const featured = document.getElementById("featuredGallery");
   if (!featured) return;
 
-  const availableItems = await getAvailableImages();
-  // Válassz véletlenszerűen, de konzisztensen (seed-alapú)
-  const selectedItems = availableItems
-    .slice()
-    .sort((a, b) => a.id - b.id)
-    .slice(0, 6);
+  // Válassz véletlenszerűen, de konzisztensen (az első 6-ot)
+  const selectedItems = GALLERY.slice(0, 6);
 
   featured.innerHTML = "";
 
@@ -341,7 +316,7 @@ function closeModal() {
 function setupFilters() {
   const filterBtns = document.querySelectorAll(".filter-btn");
   filterBtns.forEach((btn) => {
-    btn.addEventListener("click", async function () {
+    btn.addEventListener("click", function () {
       // Remove active class from all buttons
       filterBtns.forEach((b) => b.classList.remove("active"));
       // Add active class to clicked button
@@ -349,7 +324,7 @@ function setupFilters() {
 
       const filter = this.getAttribute("data-filter");
       currentFilter = filter;
-      await renderGallery(filter);
+      renderGallery(filter);
     });
   });
 }
@@ -422,13 +397,12 @@ function optimizeImages() {
 }
 
 // Initialize on DOM ready
-async function init() {
+function init() {
   console.log("Initializing gallery...");
-  const images = await getAvailableImages();
-  console.log(`Available items: ${images.length}`);
+  console.log(`Total items: ${GALLERY.length}`);
 
-  await renderGallery("all");
-  await renderFeaturedGallery();
+  renderGallery("all");
+  renderFeaturedGallery();
   setupFilters();
   setupModalEvents();
   setupSmoothScroll();
