@@ -30,7 +30,7 @@ jobs:
           set ftp:passive-mode yes;
           set net:timeout 30;
           set net:max-retries 3;
-          open -u c40067adam,$FTP_PASSWORD wh14.rackhost.hu;
+          open -u c40067adam,$FTP_PASSWORD wh07.rackhost.hu;
           chmod 755 web;
           cd web;
           cls -la;
