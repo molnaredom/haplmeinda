@@ -296,7 +296,7 @@ const galleryData = [
     price: 30000,
     category: "...",
     technique: "tűzzománc",
-    description: "....",
+    description: "...",
     sold: false,
   },
   // {
