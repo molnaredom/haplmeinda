@@ -32,7 +32,8 @@ jobs:
           set net:max-retries 3;
           open -u c40067adam,$FTP_PASSWORD wh07.rackhost.hu;
           chmod 755 web;
-          cd web;
+          chmod 755 web/haplmelinda.hu;
+          cd web/haplmelinda.hu;
           cls -la;
           mirror --reverse --verbose --delete --ignore-time --include-glob .htaccess --exclude .git/ --exclude node_modules/ --exclude netlify/ --exclude-glob *.md . .;
           glob chmod 644 *.html *.css *.js *.json *.toml;
