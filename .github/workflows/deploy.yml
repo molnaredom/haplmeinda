@@ -17,7 +17,7 @@ jobs:
       - name: 🔄 Checkout repository
         uses: actions/checkout@v4
 
-      - name: � Install lftp
+      - name: 📦 Install lftp
         run: sudo apt-get install -y lftp
 
       - name: 📤 Deploy via FTP
@@ -27,10 +27,11 @@ jobs:
           cd introducing_page
           lftp -c "
           set ftp:ssl-allow no;
-          set mirror:use-pget-n 5;
+          set net:timeout 30;
+          set net:max-retries 3;
           open -u c40067adam,$FTP_PASSWORD wh14.rackhost.hu;
           cd /public_html;
-          mirror --reverse --delete --verbose --exclude .git/ --exclude node_modules/ --exclude netlify/ --exclude .md . .;
+          mirror --reverse --verbose --only-newer --no-perms --exclude .git/ --exclude node_modules/ --exclude netlify/ --exclude-glob *.md . .;
           quit;
           "
 
