@@ -285,7 +285,7 @@ const galleryData = [
     price: 30000,
     category: "mandala",
     technique: "fa",
-    description: "....",
+    description: "...",
     sold: false,
   },
   {
