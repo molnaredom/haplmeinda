@@ -1,0 +1,39 @@
+name: 🚀 Deploy to haplmelinda.hu
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "introducing_page/**"
+  workflow_dispatch: # Kézi indítás is lehetséges
+
+jobs:
+  deploy:
+    name: 📦 FTP Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 📤 Deploy to FTP server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: wh14.rackhost.hu
+          username: c40067adam
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./introducing_page/
+          server-dir: ./public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.DS_Store
+            **/netlify/**
+            **/netlify.toml
+            **/*.md
+            **/.env*
+
+      - name: ✅ Deployment complete
+        run: echo "🎉 Successfully deployed to haplmelinda.hu!"

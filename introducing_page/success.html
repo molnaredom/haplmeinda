@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sikeres rendelés - Hápl Melinda</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .success-page {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 20px;
+      }
+
+      .success-card {
+        background: white;
+        border-radius: 20px;
+        padding: 3rem;
+        max-width: 500px;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: bounceIn 0.6s ease-out;
+      }
+
+      .success-icon {
+        font-size: 5rem;
+        margin-bottom: 1rem;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      .success-card h1 {
+        color: #27ae60;
+        margin-bottom: 1rem;
+      }
+
+      .success-card p {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      .success-details {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        text-align: left;
+      }
+
+      .success-details h3 {
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+      }
+
+      .back-btn {
+        display: inline-block;
+        padding: 15px 40px;
+        background: #667eea;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+      }
+
+      .back-btn:hover {
+        background: #764ba2;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+      }
+
+      .order-number {
+        font-family: monospace;
+        background: #e8f5e9;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: #27ae60;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="success-page">
+      <div class="success-card">
+        <div class="success-icon">🎉</div>
+        <h1>Sikeres rendelés!</h1>
+        <p>
+          Köszönjük a vásárlást! A rendelésed megkaptuk és hamarosan
+          feldolgozzuk.
+        </p>
+
+        <div class="success-details">
+          <h3>📧 Mi történik ezután?</h3>
+          <p style="margin-bottom: 0.5rem">
+            1. E-mailben küldünk egy visszaigazolást
+          </p>
+          <p style="margin-bottom: 0.5rem">2. Előkészítjük a műalkotásokat</p>
+          <p style="margin-bottom: 0">3. Értesítünk a szállítás időpontjáról</p>
+        </div>
+
+        <p>
+          Kérdés esetén írj nekünk: <br /><strong
+            >haplmelinda77@gmail.com</strong
+          >
+        </p>
+
+        <a href="index.html" class="back-btn">Vissza a főoldalra</a>
+      </div>
+    </div>
+
+    <script>
+      // Kosár törlése sikeres vásárlás után
+      localStorage.removeItem("haplmelinda_cart");
+
+      // Session ID kinyerése az URL-ből (opcionális)
+      const urlParams = new URLSearchParams(window.location.search);
+      const sessionId = urlParams.get("session_id");
+      if (sessionId) {
+        console.log("Payment session:", sessionId);
+      }
+    </script>
+  </body>
+</html>

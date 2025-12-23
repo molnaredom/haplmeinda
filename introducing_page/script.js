@@ -1,5 +1,258 @@
 // ===== ADVANCED ANIMATION EFFECTS =====
 
+// ===== STRIPE CONFIGURATION =====
+// Állítsd be a saját Stripe publishable key-edet!
+const STRIPE_PUBLISHABLE_KEY = "pk_test_XXXXXXXXXXXXXXXXXXXXXXXX"; // Cseréld ki a sajátodra!
+const USE_STRIPE = false; // Állítsd true-ra, ha aktiválni akarod a Stripe-ot
+
+// ===== CART FUNCTIONALITY =====
+let cart = JSON.parse(localStorage.getItem("haplmelinda_cart")) || [];
+
+function saveCart() {
+  localStorage.setItem("haplmelinda_cart", JSON.stringify(cart));
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const cartCount = document.getElementById("cartCount");
+  const cartTotal = document.getElementById("cartTotal");
+  const checkoutBtn = document.getElementById("checkoutBtn");
+
+  if (cartCount) {
+    cartCount.textContent = cart.length;
+    cartCount.classList.add("shake");
+    setTimeout(() => cartCount.classList.remove("shake"), 500);
+  }
+
+  if (cartTotal) {
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    cartTotal.textContent = formatPrice(total);
+  }
+
+  if (checkoutBtn) {
+    checkoutBtn.disabled = cart.length === 0;
+  }
+
+  // Update add to cart buttons
+  document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
+    const itemId = parseInt(btn.dataset.id);
+    const inCart = cart.some((item) => item.id === itemId);
+    if (inCart) {
+      btn.textContent = "✓ Kosárban";
+      btn.classList.add("added");
+      btn.disabled = true;
+    }
+  });
+}
+
+function addToCart(item, event) {
+  if (event) {
+    event.stopPropagation();
+  }
+
+  // Check if already in cart
+  if (cart.some((cartItem) => cartItem.id === item.id)) {
+    return;
+  }
+
+  cart.push({
+    id: item.id,
+    title: item.title,
+    price: item.price,
+    technique: item.technique,
+    category: item.category,
+  });
+
+  saveCart();
+
+  // Visual feedback
+  const btn = document.querySelector(`.add-to-cart-btn[data-id="${item.id}"]`);
+  if (btn) {
+    btn.textContent = "✓ Kosárban";
+    btn.classList.add("added");
+    btn.disabled = true;
+  }
+}
+
+function removeFromCart(itemId) {
+  cart = cart.filter((item) => item.id !== itemId);
+  saveCart();
+  renderCartItems();
+
+  // Re-enable the add to cart button
+  const btn = document.querySelector(`.add-to-cart-btn[data-id="${itemId}"]`);
+  if (btn) {
+    btn.textContent = "🛒 Kosárba";
+    btn.classList.remove("added");
+    btn.disabled = false;
+  }
+}
+
+function formatPrice(price) {
+  return price.toLocaleString("hu-HU") + " Ft";
+}
+
+function openCart() {
+  const modal = document.getElementById("cartModal");
+  modal.style.display = "block";
+  renderCartItems();
+  document.body.style.overflow = "hidden";
+}
+
+function closeCart() {
+  const modal = document.getElementById("cartModal");
+  modal.style.display = "none";
+  document.body.style.overflow = "";
+}
+
+function renderCartItems() {
+  const cartItemsContainer = document.getElementById("cartItems");
+  if (!cartItemsContainer) return;
+
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = `
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🛒</div>
+        <p>A kosár üres</p>
+        <p style="font-size: 0.9rem;">Böngéssz a galériában és válassz ki tetszőleges műalkotásokat!</p>
+      </div>
+    `;
+    return;
+  }
+
+  cartItemsContainer.innerHTML = cart
+    .map(
+      (item) => `
+    <div class="cart-item">
+      <img src="fenykepek/${item.id}.jpg" alt="${item.title}" 
+           onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23ddd%22 width=%22100%22 height=%22100%22/%3E%3C/svg%3E'">
+      <div class="cart-item-details">
+        <div class="cart-item-title">${item.title}</div>
+        <div class="cart-item-technique">${item.technique}</div>
+        <div class="cart-item-price">${formatPrice(item.price)}</div>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${
+        item.id
+      })" title="Eltávolítás">
+        ✕
+      </button>
+    </div>
+  `
+    )
+    .join("");
+}
+
+// ===== CHECKOUT FUNCTIONS =====
+
+async function checkout() {
+  if (cart.length === 0) return;
+
+  if (USE_STRIPE) {
+    await checkoutWithStripe();
+  } else {
+    checkoutWithEmail();
+  }
+}
+
+// Stripe Checkout
+async function checkoutWithStripe() {
+  const checkoutBtn = document.getElementById("checkoutBtn");
+  const originalText = checkoutBtn.textContent;
+
+  try {
+    checkoutBtn.disabled = true;
+    checkoutBtn.innerHTML = '<span class="loading"></span> Feldolgozás...';
+
+    // Stripe Checkout Session létrehozása a serverless function-nel
+    const response = await fetch("/api/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: cart,
+        customerEmail: null, // Opcionálisan bekérhetsz email címet
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Hiba történt a fizetés indításakor");
+    }
+
+    // Átirányítás a Stripe Checkout oldalra
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      // Fallback Stripe.js használatával
+      const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+      const { error } = await stripe.redirectToCheckout({
+        sessionId: data.sessionId,
+      });
+      if (error) {
+        throw error;
+      }
+    }
+  } catch (error) {
+    console.error("Checkout error:", error);
+    alert(
+      `Hiba történt: ${error.message}\n\nPróbáld újra, vagy használd az e-mail alapú megrendelést.`
+    );
+    checkoutBtn.disabled = false;
+    checkoutBtn.textContent = originalText;
+  }
+}
+
+// Email alapú checkout (fallback)
+function checkoutWithEmail() {
+  const orderItems = cart
+    .map(
+      (item) =>
+        `- ${item.title} (${item.technique}): ${formatPrice(item.price)}`
+    )
+    .join("\n");
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  const subject = encodeURIComponent("Megrendelés - Hápl Melinda műalkotások");
+  const body = encodeURIComponent(
+    `Tisztelt Hápl Melinda!\n\n` +
+      `Szeretném megrendelni az alábbi műalkotásokat:\n\n` +
+      `${orderItems}\n\n` +
+      `Összesen: ${formatPrice(total)}\n\n` +
+      `Kérem, vegye fel velem a kapcsolatot a fizetési és szállítási részletekkel kapcsolatban.\n\n` +
+      `Üdvözlettel,\n[Az Ön neve]\n[Telefonszám]\n[Cím]`
+  );
+
+  // Open email client
+  window.location.href = `mailto:haplmelinda77@gmail.com?subject=${subject}&body=${body}`;
+
+  // Show confirmation
+  setTimeout(() => {
+    alert(
+      "Köszönjük érdeklődését! Az e-mail kliens megnyílt a megrendelés adataival. Ha nem nyílt meg, kérjük írjon a haplmelinda77@gmail.com címre."
+    );
+  }, 500);
+}
+
+// Close cart when clicking outside
+document.addEventListener("click", (e) => {
+  const modal = document.getElementById("cartModal");
+  if (e.target === modal) {
+    closeCart();
+  }
+});
+
+// Close cart with Escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    const cartModal = document.getElementById("cartModal");
+    if (cartModal && cartModal.style.display === "block") {
+      closeCart();
+    }
+  }
+});
+
 // Parallax scroll effect
 function initParallaxEffect() {
   const heroSection = document.querySelector(".hero");
@@ -153,25 +406,47 @@ function renderGallery(filter = "all") {
     itemEl.setAttribute("data-id", item.id);
     itemEl.style.animation = `bounceIn 0.6s ease-out ${index * 0.05}s both`;
 
+    const isInCart = cart.some((cartItem) => cartItem.id === item.id);
+    const isSold = item.sold;
+
     itemEl.innerHTML = `
             <img src="fenykepek/${item.id}.jpg" 
                  alt="${item.title}" 
                  class="gallery-item-image"
                  loading="lazy"
+                 onclick="openModal(GALLERY.find(g => g.id === ${item.id}))"
                  onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22300%22 height=%22300%22/%3E%3C/svg%3E'">
             <div class="gallery-item-info">
                 <div class="gallery-item-title">${item.title}</div>
                 <div class="gallery-item-technique">${item.technique}</div>
                 <span class="gallery-item-category">${item.category}</span>
                 ${
-                  item.sold
+                  isSold
                     ? '<span style="color: #e74c3c; font-weight: bold; margin-left: 0.5rem;">ELADVA</span>'
+                    : ""
+                }
+                ${
+                  !isSold
+                    ? `<div class="gallery-item-price">${formatPrice(
+                        item.price
+                      )}</div>`
+                    : ""
+                }
+                ${
+                  !isSold
+                    ? `
+                <button class="add-to-cart-btn ${isInCart ? "added" : ""}" 
+                        data-id="${item.id}" 
+                        onclick="addToCart(GALLERY.find(g => g.id === ${
+                          item.id
+                        }), event)"
+                        ${isInCart ? "disabled" : ""}>
+                    ${isInCart ? "✓ Kosárban" : "🛒 Kosárba"}
+                </button>`
                     : ""
                 }
             </div>
         `;
-
-    itemEl.addEventListener("click", () => openModal(item));
 
     // Add hover particle effect
     itemEl.addEventListener("mouseenter", (e) => {
@@ -246,6 +521,9 @@ function renderFeaturedGallery() {
     itemEl.setAttribute("data-id", item.id);
     itemEl.style.animation = `scaleInRotate 0.8s ease-out ${index * 0.1}s both`;
 
+    const isInCart = cart.some((cartItem) => cartItem.id === item.id);
+    const isSold = item.sold;
+
     itemEl.innerHTML = `
             <img src="fenykepek/${item.id}.jpg" 
                  alt="${item.title}"
@@ -253,7 +531,29 @@ function renderFeaturedGallery() {
                  onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22300%22 height=%22300%22/%3E%3C/svg%3E'">
             <div class="featured-overlay">
                 <div class="featured-title">${item.title}</div>
-                <div class="featured-technique">${item.technique} • ${item.category}</div>
+                <div class="featured-technique">${item.technique} • ${
+      item.category
+    }</div>
+                ${
+                  !isSold
+                    ? `<div class="featured-price">${formatPrice(
+                        item.price
+                      )}</div>`
+                    : '<div class="featured-sold">ELADVA</div>'
+                }
+                ${
+                  !isSold
+                    ? `
+                <button class="featured-cart-btn ${isInCart ? "added" : ""}" 
+                        data-id="${item.id}"
+                        onclick="event.stopPropagation(); addToCart(GALLERY.find(g => g.id === ${
+                          item.id
+                        }), event)"
+                        ${isInCart ? "disabled" : ""}>
+                    ${isInCart ? "✓ Kosárban" : "🛒 Kosárba"}
+                </button>`
+                    : ""
+                }
             </div>
         `;
 
@@ -408,6 +708,9 @@ function init() {
   setupSmoothScroll();
   setupLazyLoading();
   optimizeImages();
+
+  // Initialize cart UI
+  updateCartUI();
 
   // Initialize advanced animations
   initParallaxEffect();
